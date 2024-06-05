@@ -18,15 +18,14 @@
 [CmdletBinding()]
 Param (
 	[Parameter(Mandatory=$false)]
-	[ValidateSet('Install','Uninstall','Repair')]
+	[ValidateSet('Install','Uninstall')]
 	[string]$DeploymentType = 'Install'
 )
 
 Try {
 
-	## Set the script execution policy for this process
-	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch {}
 	Write-Host "Start"
+ 	Write-Host $DeploymentType
 
  	If ($DeploymentType -ieq 'Install')
 	{
@@ -41,7 +40,7 @@ Try {
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 		
 		# Install
-		Write-Host "Install"
+		Write-Host "Installing"
 		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
   
 	}
@@ -49,7 +48,7 @@ Try {
 	{
 		
 		## Uninstall Zoom
-		Write-Host "Uninstall"
+		Write-Host "Uninstalling"
 		Install-PackageProvider -Name NuGet -Force | Out-Null
 		Get-Package -Name "Zoom*(64-bit)" -ErrorAction SilentlyContinue | Uninstall-Package
 	
