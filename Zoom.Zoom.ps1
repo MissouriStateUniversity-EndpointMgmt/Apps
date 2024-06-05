@@ -22,6 +22,12 @@ Param (
 	[string]$DeploymentType = 'Install'
 )
 
+$invoc = (Get-Variable MyInvocation).Value
+$sourcePath = Split-Path $invoc.MyCommand.Path
+
+Write-Host $invoc
+Write-Host $sourcePath
+
 Try {
 
 	Write-Host "Starting"
