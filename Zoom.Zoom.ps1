@@ -30,28 +30,27 @@ Try {
  	If ($DeploymentType -ieq 'Install')
 	{
 
-  		Write-Host "Installing"
-    		Write-Host $PSScriptRoot
+  		Write-Host "Install Section"
+		Write-Host $PSScriptRoot
 	
-		# Variables
-		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
-		
+  		Write-Host "Downloading"
 		# Download latest release from Zoom
 		$downloadUri = "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64"
 		$filePath = Join-Path -Path $PSScriptRoot -ChildPath "ZoomInstallerFull.msi"
 		$ProgressPreference = 'SilentlyContinue'
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 		
+  		Write-Host "Installing"
 		# Install
-		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
+		Start-Process msiexec.exe -Wait -PassThru -ArgumentList "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST='missouristate' ZoomAutoUpdate=1 ZConfig='kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1' ZRecommend='AudioAutoAdjust=1'"
 
-    		Write-Host "Finished"
+    	Write-Host "Finished"
   
 	}
 	ElseIf ($DeploymentType -ieq 'Uninstall')
 	{
 		
-		Write-Host "Uninstalling"
+  		Write-Host "Uninstall Section"
   
 		## Uninstall Zoom
 		Install-PackageProvider -Name NuGet -Force | Out-Null
