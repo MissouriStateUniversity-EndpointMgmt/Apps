@@ -7,11 +7,11 @@
 	
 .NOTES
 	Author:      Brian Hays
-    Created:     2024-06-05
-    Updated:     2024-06-05
+	Created:     2024-06-05
+	Updated:     2024-06-05
 	
-    Version history:
-    1.0.0 - (2024-06-05) - Script created
+	Version history:
+	1.0.0 - (2024-06-05) - Script created
 
 #>
 
