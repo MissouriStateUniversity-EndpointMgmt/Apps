@@ -29,6 +29,8 @@ Try {
 
  	If ($DeploymentType -ieq 'Install')
 	{
+
+  		Write-Host "Installing"
 	
 		# Variables
 		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
@@ -40,19 +42,25 @@ Try {
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 		
 		# Install
-		Write-Host "Installing"
 		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
+
+    		Write-Host "Finished"
   
 	}
 	ElseIf ($DeploymentType -ieq 'Uninstall')
 	{
 		
-		## Uninstall Zoom
 		Write-Host "Uninstalling"
+  
+		## Uninstall Zoom
 		Install-PackageProvider -Name NuGet -Force | Out-Null
 		Get-Package -Name "Zoom*(64-bit)" -ErrorAction SilentlyContinue | Uninstall-Package
-	
+
+      		Write-Host "Finished"
+
 	}
+
+ 	Write-Host "End"
 
 }
 Catch {
