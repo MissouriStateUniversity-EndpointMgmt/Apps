@@ -24,7 +24,7 @@ Param (
 
 Try {
 
-	Write-Host "Start"
+	Write-Host "Starting"
  	Write-Host $DeploymentType
 
  	If ($DeploymentType -ieq 'Install')
