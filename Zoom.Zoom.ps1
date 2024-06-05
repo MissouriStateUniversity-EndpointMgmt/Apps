@@ -31,6 +31,7 @@ Try {
 	{
 
   		Write-Host "Installing"
+    		Write-Host $PSScriptRoot
 	
 		# Variables
 		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
