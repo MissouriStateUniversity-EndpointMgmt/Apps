@@ -22,16 +22,10 @@ Param (
 	[string]$DeploymentType = 'Install'
 )
 
-$invoc = (Get-Variable MyInvocation).Value
-$sourcePath = Split-Path $invoc.MyCommand.Path
-
-Write-Host $invoc
-Write-Host $sourcePath
-
 Try {
 
 	Write-Host "Starting"
- 	Write-Host $DeploymentType
+ 	Write-Host (Get-Location).Path
 
  	If ($DeploymentType -ieq 'Install')
 	{
@@ -42,7 +36,7 @@ Try {
   		Write-Host "Downloading"
 		# Download latest release from Zoom
 		$downloadUri = "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64"
-		$filePath = Join-Path -Path $PSScriptRoot -ChildPath "ZoomInstallerFull.msi"
+		$filePath = Join-Path -Path (Get-Location).Path -ChildPath "ZoomInstallerFull.msi"
 		$ProgressPreference = 'SilentlyContinue'
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 		
