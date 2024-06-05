@@ -26,7 +26,7 @@ Try {
 
     ## Set the script execution policy for this process
     Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch {}
-
+	Write-Host "Start"
     If ($deploymentType -ieq 'Install')
     {
 
@@ -40,13 +40,14 @@ Try {
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 
 		# Install
+		Write-Host "Install"
 		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
-
     }
     ElseIf ($deploymentType -ieq 'Uninstall')
     {
 
 		## Uninstall Zoom
+		Write-Host "Uninstall"
 		Install-PackageProvider -Name NuGet -Force | Out-Null
 		Get-Package -Name "Zoom*(64-bit)" -ErrorAction SilentlyContinue | Uninstall-Package
 
