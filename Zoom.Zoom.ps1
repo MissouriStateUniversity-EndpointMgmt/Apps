@@ -27,6 +27,9 @@ Try {
  	If ($DeploymentType -ieq 'Install')
 	{
 
+		# Variables
+		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
+
 		# Download latest release from Zoom
 		$downloadUri = "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64"
 		$filePath = Join-Path -Path (Get-Location).Path -ChildPath "ZoomInstallerFull.msi"
@@ -34,7 +37,7 @@ Try {
 		Invoke-WebRequest -Uri $downloadUri -Out $filePath -UseBasicParsing
 		
 		# Install
-		Start-Process msiexec.exe -Wait -PassThru -ArgumentList "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST='missouristate' ZoomAutoUpdate=1 ZConfig='kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1' ZRecommend='AudioAutoAdjust=1'"
+		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
 
 	}
 	ElseIf ($DeploymentType -ieq 'Uninstall')
