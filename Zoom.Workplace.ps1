@@ -16,6 +16,13 @@
 
 #>
 
+[CmdletBinding()]
+Param (
+	[Parameter(Mandatory=$false)]
+	[ValidateSet('Install','Uninstall')]
+	[string]$Action = 'Install'
+)
+
 try {
 
  	if ($Action -ieq 'Install')
