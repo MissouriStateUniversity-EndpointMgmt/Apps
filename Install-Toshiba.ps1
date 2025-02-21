@@ -25,8 +25,6 @@
 [CmdletBinding()]
 Param (
 	[Parameter(Mandatory = $True)]
-	[String]$ScriptLocation,
-	[Parameter(Mandatory = $True)]
 	[String]$PrinterName
 )
 
@@ -92,7 +90,7 @@ $LogFile = Join-Path -Path $LogDir -ChildPath $LogName
 
 Start-Transcript -Path $LogFile
 
-$INFPath = "$ScriptLocation\drivers\$INFFile"
+$INFPath = "$PSScriptRoot\drivers\$INFFile"
 Write-Host $INFPath
 $INFARGS = @(
     "/install"
