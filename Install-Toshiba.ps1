@@ -28,9 +28,9 @@
 [CmdletBinding()]
 Param (
 	[Parameter(Mandatory = $True)]
-	[String]$PrinterName,
+	[String]$ScriptLocation,
 	[Parameter(Mandatory = $True)]
-	[String]$ScriptLocation
+	[String]$PrinterName
 )
 
 # Printer Drivers
