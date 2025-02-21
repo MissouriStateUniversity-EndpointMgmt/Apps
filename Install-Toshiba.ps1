@@ -87,6 +87,7 @@ function Get-PrinterData {
 
 $INFPath = "drivers\$INFFile"
 Write-Host "PATH"
+Get-Location
 Write-Host $INFPath
 $INFARGS = @(
     "/install"
