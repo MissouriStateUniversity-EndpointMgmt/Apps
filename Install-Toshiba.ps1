@@ -85,7 +85,8 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "drivers\$INFFile"
+$INFPath = "$PSScriptRoot\drivers\$INFFile"
+Write-Host $INFPath
 $INFARGS = @(
     "/install"
     "/add-driver"
