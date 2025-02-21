@@ -29,6 +29,7 @@
 Param (
 	[Parameter(Mandatory = $True)]
 	[String]$PrinterName
+	[String]$ScriptLocation
 )
 
 # Printer Drivers
@@ -85,7 +86,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "$PSScriptRoot\drivers\$INFFile"
+$INFPath = "$ScriptLocation\drivers\$INFFile"
 Write-Host $INFPath
 $INFARGS = @(
     "/install"
