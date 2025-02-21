@@ -28,7 +28,7 @@
 [CmdletBinding()]
 Param (
 	[Parameter(Mandatory = $True)]
-	[String]$PrinterName
+	[String]$PrinterName,
 	[Parameter(Mandatory = $True)]
 	[String]$ScriptLocation
 )
