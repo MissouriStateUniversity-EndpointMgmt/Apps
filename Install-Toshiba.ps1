@@ -29,6 +29,7 @@
 Param (
 	[Parameter(Mandatory = $True)]
 	[String]$PrinterName
+	[Parameter(Mandatory = $True)]
 	[String]$ScriptLocation
 )
 
