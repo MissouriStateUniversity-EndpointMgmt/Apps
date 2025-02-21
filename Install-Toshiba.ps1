@@ -84,6 +84,14 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
+# Log File
+$LogDir = "C:\ProgramData\Microsoft\IntuneManagementExtension\Logs"
+$LogStrip = $PrinterName -replace '\s', ''
+$LogName = "Printer_$($LogStrip).log"
+$LogFile = Join-Path -Path $LogDir -ChildPath $LogName
+
+Start-Transcript -Path $LogFile
+
 $INFPath = "$ScriptLocation\drivers\$INFFile"
 Write-Host $INFPath
 $INFARGS = @(
@@ -152,3 +160,5 @@ if ($PrinterData.PortName -ne $null) {
 else {
 	Write-Output "Printer information not found."
 }
+
+Stop-Transcript
