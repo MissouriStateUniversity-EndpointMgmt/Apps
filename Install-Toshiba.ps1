@@ -14,12 +14,12 @@
 	Repository:  https://github.com/byteben/Windows-10/blob/master/Install-Printer.ps1
 	Created:     2021-01-12
 	Updated:     2021-12-09
-
+	
 	Author:      Brian Hays
 	Updated:     2024-09-05
 	
-    Version history:
-    2.0.2 - (2021-12-10) - Merged scripts and updated for MSU specific support, using PortName instead of PrinterIP
+	Version history:
+	2.0.2 - (2021-12-10) - Merged scripts and updated for MSU specific support, using PortName instead of PrinterIP
 	2.1.0 - (2024-09-05) - Changed to a switch command instead of passing the DriverName, PortName, PrinterComment, PrinterLocation, INFFile
 	2.1.1 - (2025-10-27) - Removed Logging
 
@@ -85,7 +85,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "$PSScriptRoot\drivers\$INFFile"
+$INFPath = "drivers\$INFFile"
 $INFARGS = @(
     "/install"
     "/add-driver"
