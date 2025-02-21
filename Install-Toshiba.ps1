@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	Simple script to install a network printer from an INF file. The INF and required CAB files hould be in the same directory as the script if creating a Win32app
+	Intune version, simple script to install a network printer from an INF file. The INF and required CAB files hould be in the same directory as the script if creating a Win32app
 	
 .DESCRIPTION
 	Rather than passing all the printer info, the script will get the printer information from Get-PrinterData function and install the printer.
@@ -12,16 +12,13 @@
 .NOTES
 	Author:      Ben Whitmore
 	Repository:  https://github.com/byteben/Windows-10/blob/master/Install-Printer.ps1
-	Created:     2021-01-12
-	Updated:     2021-12-09
-	
-	Author:      Brian Hays
-	Updated:     2024-09-05
+	Created:     2021-12-31
+
+ 	Author:      Brian Hays
+	Updated:     2025-02-21
 	
 	Version history:
-	2.0.2 - (2021-12-10) - Merged scripts and updated for MSU specific support, using PortName instead of PrinterIP
-	2.1.0 - (2024-09-05) - Changed to a switch command instead of passing the DriverName, PortName, PrinterComment, PrinterLocation, INFFile
-	2.1.1 - (2025-10-27) - Removed Logging
+	1.0.0 - (2025-02-21) - Intune version of Install-Printer.ps1
 
 #>
 
