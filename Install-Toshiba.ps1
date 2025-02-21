@@ -20,8 +20,8 @@
 	
     Version history:
     2.0.2 - (2021-12-10) - Merged scripts and updated for MSU specific support, using PortName instead of PrinterIP
-    2.1.0 - (2024-09-05) - Changed to a switch command instead of passing the DriverName, PortName, PrinterComment, PrinterLocation, INFFile
-    2.1.1 - (2025-10-27) - Removed Logging
+	2.1.0 - (2024-09-05) - Changed to a switch command instead of passing the DriverName, PortName, PrinterComment, PrinterLocation, INFFile
+	2.1.1 - (2025-10-27) - Removed Logging
 
 #>
 
@@ -85,10 +85,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "drivers\$INFFile"
-Write-Host "PATH"
-Get-Location
-Write-Host $INFPath
+$INFPath = "$PSScriptRoot\drivers\$INFFile"
 $INFARGS = @(
     "/install"
     "/add-driver"
