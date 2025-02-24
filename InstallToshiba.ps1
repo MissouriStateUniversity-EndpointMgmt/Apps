@@ -82,7 +82,7 @@ if ($PrinterData.PortName -ne $null) {
 
 		#Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+		Start-Process C:\Windows\System32\pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
 
 		#Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
