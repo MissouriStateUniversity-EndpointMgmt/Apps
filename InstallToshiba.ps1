@@ -4,11 +4,10 @@ $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
 Write-Output "Path1"
 Write-Output $INFFile
-Write-Output "Path2"
+Write-Output "PathX"
 Write-Output (Get-Location).Path
 $ScriptPath = (Get-Location).Path
-Set-Location -Path (Get-Location).Path
-Write-Output "Path4"
+
 
 function Get-PrinterData {
 	param (
@@ -60,7 +59,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "drivers\$INFFile"
+$INFPath = "$ScriptPath\drivers\$INFFile"
 Write-Output $INFPath
 $INFARGS = @(
     "/install"
