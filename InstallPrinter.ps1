@@ -1,10 +1,5 @@
 
-# Printer Drivers
-$DriverName = "TOSHIBA Universal Printer 2"
-$INFFile = "eSf6u.inf"
-Write-Output "PathC"
-Write-Output $INFFile
-Write-Output (Get-Location).Path
+Write-Output "PathD"
 $ScriptPath = (Get-Location).Path
 
 function Get-PrinterData {
@@ -57,7 +52,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "$ScriptPath\drivers\$INFFile"
+$INFPath = "$PSScriptRoot\drivers\$INFFile"
 Write-Output $INFPath
 $INFARGS = @(
     "/install"
@@ -75,12 +70,9 @@ if ($PrinterData.PortName -ne $null) {
 
 		# Delete old printer connections
 		Get-WmiObject -Class Win32_Printer | where{$_.Name -eq $PrinterName } | foreach{$_.delete()}
-		Get-WmiObject -Class Win32_Printer | where{$_.Name -eq "\\eagle\$PrinterName" } | foreach{$_.delete()}
-		Get-WmiObject -Class Win32_Printer | where{$_.Name -eq "\\jupiter\$PrinterName" } | foreach{$_.delete()}
 
 		#Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-		#Start-Process C:\Windows\System32\pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
   		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
 
 		#Install driver
