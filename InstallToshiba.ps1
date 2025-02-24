@@ -6,6 +6,8 @@ Write-Output "Path1"
 Write-Output $INFFile
 Write-Output "Path2"
 Write-Output (Get-Location).Path
+$ScriptPath = (Get-Location).Path
+Write-Output "Path3"
 
 function Get-PrinterData {
 	param (
@@ -57,7 +59,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "$PSScriptRoot\drivers\$INFFile"
+$INFPath = "$ScriptPath\drivers\$INFFile"
 Write-Output $INFPath
 $INFARGS = @(
     "/install"
