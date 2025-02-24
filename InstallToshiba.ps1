@@ -2,8 +2,9 @@
 # Printer Drivers
 $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
+Write-Output "Path1"
 Write-Output $INFFile
-Write-Output "Path"
+Write-Output "Path2"
 Write-Output (Get-Location).Path
 
 function Get-PrinterData {
