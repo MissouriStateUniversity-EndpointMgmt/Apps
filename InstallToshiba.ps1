@@ -7,7 +7,8 @@ Write-Output $INFFile
 Write-Output "Path2"
 Write-Output (Get-Location).Path
 $ScriptPath = (Get-Location).Path
-Write-Output "Path3"
+Set-Location -Path (Get-Location).Path
+Write-Output "Path4"
 
 function Get-PrinterData {
 	param (
@@ -59,7 +60,7 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-$INFPath = "$ScriptPath\drivers\$INFFile"
+$INFPath = "drivers\$INFFile"
 Write-Output $INFPath
 $INFARGS = @(
     "/install"
