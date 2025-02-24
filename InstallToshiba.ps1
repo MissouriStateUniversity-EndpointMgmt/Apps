@@ -4,7 +4,7 @@ $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
 Write-Output "Path1"
 Write-Output $INFFile
-Write-Output "PathX"
+Write-Output "PathA"
 Write-Output (Get-Location).Path
 $ScriptPath = (Get-Location).Path
 
