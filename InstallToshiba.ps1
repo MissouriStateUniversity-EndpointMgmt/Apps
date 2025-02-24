@@ -3,6 +3,7 @@
 $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
 Write-Output $INFFile
+Get-Location
 
 function Get-PrinterData {
 	param (
