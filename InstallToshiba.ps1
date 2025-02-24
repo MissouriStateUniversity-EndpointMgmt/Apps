@@ -2,7 +2,7 @@
 # Printer Drivers
 $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
-Write-Output "PathA"
+Write-Output "PathB"
 Write-Output $INFFile
 Write-Output (Get-Location).Path
 $ScriptPath = (Get-Location).Path
@@ -80,7 +80,8 @@ if ($PrinterData.PortName -ne $null) {
 
 		#Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-		Start-Process C:\Windows\System32\pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+		#Start-Process C:\Windows\System32\pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+  		Start-Process -FilePath "C:\Windows\System32\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
 
 		#Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
