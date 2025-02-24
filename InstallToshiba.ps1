@@ -2,6 +2,7 @@
 # Printer Drivers
 $DriverName = "TOSHIBA Universal Printer 2"
 $INFFile = "eSf6u.inf"
+Write-Output $INFFile
 
 function Get-PrinterData {
 	param (
