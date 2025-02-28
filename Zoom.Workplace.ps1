@@ -6,7 +6,7 @@ try {
 		# Variables
 		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
 
-		# Download latest release from Zoom
+		# Download latest release
 		$downloadUri = "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64"
 		$filePath = Join-Path -Path (Get-Location).Path -ChildPath "ZoomInstallerFull.msi"
 		$ProgressPreference = 'SilentlyContinue'
