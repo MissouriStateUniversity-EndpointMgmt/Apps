@@ -1,28 +1,3 @@
-<#
-.SYNOPSIS
-	
-.DESCRIPTION
-
-.EXAMPLE
-	
-.NOTES
-	Author:      Brian Hays
-	Created:     2024-06-05
-	Updated:     2024-10-15
-	
-	Version history:
-	1.0.0 - (2024-06-05) - Script created
-	1.0.1 - (2024-10-15) - Updated
-
-#>
-
-[CmdletBinding()]
-Param (
-	[Parameter(Mandatory=$false)]
-	[ValidateSet('Install','Uninstall')]
-	[string]$Action = 'Install'
-)
-
 try {
 
  	if ($Action -ieq 'Install')
