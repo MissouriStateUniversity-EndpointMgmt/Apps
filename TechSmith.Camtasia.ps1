@@ -15,7 +15,7 @@ try {
 		Start-Process msiexec.exe -Wait -PassThru -ArgumentList $installArgs
 
 	}
-	elseif ($Action -ieq 'Uninstall')
+	elseif ($Action -ieq 'Remove')
 	{
 		
 		## Uninstall
