@@ -3,7 +3,6 @@ try {
  	if ($Action -ieq 'Install')
 	{
 
-		# Variables
 		$installArgs = "/i ZoomInstallerFull.msi /qn /norestart MSIRestartManagerControl=Disable ZSSOHOST=""missouristate"" ZoomAutoUpdate=1 ZConfig=""kCmdParam_InstallOption=8;EnableEmbedBrowserForSSO=1"" ZRecommend=""AudioAutoAdjust=1"""
 
 		# Download latest release
@@ -19,7 +18,7 @@ try {
 	elseif ($Action -ieq 'Uninstall')
 	{
 		
-		## Uninstall Zoom
+		## Uninstall
 		Install-PackageProvider -Name NuGet -Force | Out-Null
 		Get-Package -Name "Zoom*(64-bit)" -ErrorAction SilentlyContinue | Uninstall-Package
 
