@@ -3,6 +3,8 @@ try {
  	if ($Action -ieq 'Install')
 	{
 
+		$InstallArgs = "/i camtasia.msi TSC_SOFTWARE_KEY=$($ProductKey) TSC_SOFTWARE_USER=""Missouri State University"" TSC_UPDATE_ENABLE=0 /passive /norestart"
+
 		# Download latest release
 		$downloadUri = "https://download.techsmith.com/camtasiastudio/releases/camtasia.msi"
 		$filePath = Join-Path -Path (Get-Location).Path -ChildPath "camtasia.msi"
