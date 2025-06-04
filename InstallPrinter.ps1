@@ -140,8 +140,8 @@ function Get-PrinterData {
 	return $PrinterDetails
 }
 
-# $INFPath = "$PSScriptRoot\drivers\$INFFile"
-# Write-Output $INFPath
+$INFPath = "$PSScriptRoot\drivers\$INFFile"
+Write-Output $INFPath
 $INFARGS = @(
     "/install"
     "/add-driver"
@@ -161,7 +161,7 @@ if ($PrinterData.PortName -ne $null) {
 
 		#Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-  		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
+  		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
 
 		#Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
