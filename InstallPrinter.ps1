@@ -128,9 +128,15 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
 			$PrinterDetails.PrinterLocation = "SCNC"
 		}
+ 		# LEXMARK
+  		"BIO-GREEN" {
+			$PrinterDetails.PortName = "bio-green"
+			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
+			$PrinterDetails.PrinterLocation = "SCNC 108B"
+		}
   		# DELL
  		# CANON
- 	}
+  	}
 	return $PrinterDetails
 }
 
