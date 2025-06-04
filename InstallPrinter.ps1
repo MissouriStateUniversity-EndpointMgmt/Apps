@@ -159,7 +159,17 @@ if ($PrinterData.PortName -ne $null) {
 
 		#Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-  		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+
+		Try {
+			[__comobject]$SMSTSEnvironment = New-Object -ComObject 'Microsoft.SMS.TSEnvironment' -ErrorAction 'Stop'
+			Write-Output "Successfully loaded COM Object [Microsoft.SMS.TSEnvironment]. Therefore, script is currently running from a SCCM Task Sequence."
+			$null = [Runtime.Interopservices.Marshal]::ReleaseComObject($SMSTSEnvironment)
+			Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+		}
+		Catch {
+			Write-Output "Unable to load COM Object [Microsoft.SMS.TSEnvironment]. Therefore, script is not currently running from a SCCM Task Sequence."
+			Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
+		}
 
 		#Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
