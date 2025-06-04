@@ -167,7 +167,7 @@ if ($PrinterData.PortName -ne $null) {
 	  		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
 		}
 		catch {
-  			Write-Output "The script is not currently running from a SCCM Task Sequence.
+  			Write-Output "The script is not currently running from a SCCM Task Sequence."
 	 		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
   		}
 
