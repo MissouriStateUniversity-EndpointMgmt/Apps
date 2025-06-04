@@ -141,9 +141,9 @@ function Get-PrinterData {
 }
 
 $INFARGS = @(
-    "/install"
-    "/add-driver"
-    $INFPath
+	"/install"
+	"/add-driver"
+	$INFPath
 )
 
 $PrinterData = Get-PrinterData $PrinterName
@@ -157,21 +157,21 @@ if ($PrinterData.PortName -ne $null) {
 		# Delete old printer connections
 		Get-WmiObject -Class Win32_Printer | where{$_.Name -eq $PrinterName } | foreach{$_.delete()}
 
-		#Add driver to driver store
+		# Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
-
-		Try {
-			[__comobject]$SMSTSEnvironment = New-Object -ComObject 'Microsoft.SMS.TSEnvironment' -ErrorAction 'Stop'
-			Write-Output "Successfully loaded COM Object [Microsoft.SMS.TSEnvironment]. Therefore, script is currently running from a SCCM Task Sequence."
-			$null = [Runtime.Interopservices.Marshal]::ReleaseComObject($SMSTSEnvironment)
-			Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
+  
+		# Check if running in a MCM TS, need to use SysNative path if Intune
+		try { 
+			$TSEnv = New-Object -ComObject Microsoft.SMS.TSEnvironment
+   			Write-Output "The script is currently running from a SCCM Task Sequence."
+	  		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
 		}
-		Catch {
-			Write-Output "Unable to load COM Object [Microsoft.SMS.TSEnvironment]. Therefore, script is not currently running from a SCCM Task Sequence."
-			Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
-		}
+		catch {
+  			Write-Output "The script is not currently running from a SCCM Task Sequence.
+	 		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
+  		}
 
-		#Install driver
+  		# Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
 		if (-not $DriverExist) {
 			Write-Output "Adding Printer Driver ""$($DriverName)"""
@@ -181,7 +181,7 @@ if ($PrinterData.PortName -ne $null) {
 			Write-Output "Print Driver ""$($DriverName)"" already exists. Skipping driver installation."
 		}
 
-		#Create Printer Port
+		# Create Printer Port
 		$PortExist = Get-Printerport -Name $PrinterData.PortName -ErrorAction SilentlyContinue
 		if (-not $PortExist) {
 			Write-Output "Adding Port ""$($PrinterData.PortName)"""
@@ -191,7 +191,7 @@ if ($PrinterData.PortName -ne $null) {
 			Write-Output "Port ""$($PrinterData.PortName)"" already exists. Skipping Printer Port installation."
 		}
 
-		#Add Printer
+		# Add Printer
 		$PrinterExist = Get-Printer -Name $PrinterName -ErrorAction SilentlyContinue
 		if (-not $PrinterExist) {
 			Write-Output "Adding Printer ""$($PrinterName)"""
