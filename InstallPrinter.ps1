@@ -17,17 +17,22 @@ function Get-PrinterData {
 		"CNAS-BLACK" {
 			$PrinterDetails.PortName = "mfp14346783"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4528A"
-			$PrinterDetails.PrinterLocation = "SCNC 142F"
+			$PrinterDetails.PrinterLocation = "SCNC 110F"
+		}
+		"BIO-BLACK" {
+			$PrinterDetails.PortName = "bio-black"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5508A"
+			$PrinterDetails.PrinterLocation = "SCNC 210A"
 		}
 		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
-			$PrinterDetails.PrinterLocation = "SCNC 342"
+			$PrinterDetails.PrinterLocation = "SCNC 310E"
 		}
 		"CRPM-BLACK" {
 			$PrinterDetails.PortName = "crpm-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4505AC"
-			$PrinterDetails.PrinterLocation = "SCNC 1XX"
+			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
 		"CSC-BLACK" {
 			$PrinterDetails.PortName = "csc-black"
@@ -37,18 +42,18 @@ function Get-PrinterData {
 		"MTH-BLACK" {
 			$PrinterDetails.PortName = "mth-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6508A"
-			$PrinterDetails.PrinterLocation = "CHEK 16M"
+			$PrinterDetails.PrinterLocation = "UNVH 212"
 		}
 		"MTH-BLUE" {
 			$PrinterDetails.PortName = "mth-blue"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6518A"
-			$PrinterDetails.PrinterLocation = "CHEK 43M"
+			$PrinterDetails.PrinterLocation = "UNVH 006"
 		}
  		# HP
 		"CNAS-BLUE" {
 			$PrinterDetails.PortName = "cnas-blue"
 			$PrinterDetails.PrinterComment = "HP LaserJet 400 color M451dn"
-			$PrinterDetails.PrinterLocation = "SCNC 170"
+			$PrinterDetails.PrinterLocation = "SCNC 107"
 		}
 		"BIO-RED" {
 			$PrinterDetails.PortName = "npiadcc2d"
@@ -63,32 +68,27 @@ function Get-PrinterData {
 		"MTH-RED" {
 			$PrinterDetails.PortName = "mth-red"
 			$PrinterDetails.PrinterComment = "HP LaserJet 400 M401dne"
-			$PrinterDetails.PrinterLocation = "CHEK 43M"
+			$PrinterDetails.PrinterLocation = "UNVH 006"
 		}
 		"MTH-ORANGE" {
 			$PrinterDetails.PortName = "mth-orange"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet M402dne"
 			$PrinterDetails.PrinterLocation = "CHEK 001"
 		}
-		"MTH-GREEN" {
-			$PrinterDetails.PortName = "mth-green"
-			$PrinterDetails.PrinterComment = "HP Color LaserJet CP3525"
-			$PrinterDetails.PrinterLocation = "CHEK 10M"
-		}
-		"GGP-YELLOW" {
-			$PrinterDetails.PortName = "npi9ee684"
+		"SEES-YELLOW" {
+			$PrinterDetails.PortName = "sees-yellow"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet CP4005"
-			$PrinterDetails.PrinterLocation = "SCNC 354"
+			$PrinterDetails.PrinterLocation = "SCNC 310"
 		}
-		"GGP-RED" {
-			$PrinterDetails.PortName = "npi82eb61"
+		"SEES-RED" {
+			$PrinterDetails.PortName = "sees-red"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet CP4005"
 			$PrinterDetails.PrinterLocation = "SCNC 342"
 		}
-		"GGP-ORANGE" {
-			$PrinterDetails.PortName = "npi1f1d44"
-			$PrinterDetails.PrinterComment = "HP LaserJet P4515"
-			$PrinterDetails.PrinterLocation = "SCNC 311"
+		"SEES-INDIGO" {
+			$PrinterDetails.PortName = "sees-indigo"
+			$PrinterDetails.PrinterComment = "HP LaserJet Pro M201dw"
+			$PrinterDetails.PrinterLocation = "SCNC 306"
 		}
 		"CHM-GREEN" {
 			$PrinterDetails.PortName = "chm-green"
@@ -105,37 +105,46 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP LaserJet P3005"
 			$PrinterDetails.PrinterLocation = "SCNC 403"
 		}
-		"CRPM-RED" {
-			$PrinterDetails.PortName = "crpm-red"
-			$PrinterDetails.PrinterComment = "HP LaserJet 400 M401dne"
-			$PrinterDetails.PrinterLocation = "LEVY 100"
-		}
-		"OEWRI-YELLOW" {
-			$PrinterDetails.PortName = "npi03f1a0"
-			$PrinterDetails.PrinterComment = "HP LaserJet Pro M201dw"
-			$PrinterDetails.PrinterLocation = "SCNC 125"
+		"OEWRI-GREEN" {
+			$PrinterDetails.PortName = "oewri-green"
+			$PrinterDetails.PrinterComment = "HP LaserJet 200 Color M251nw"
+			$PrinterDetails.PrinterLocation = "SCNC 305"
 		}
   		# BROTHER
 		"MTH-GREEN" {
 			$PrinterDetails.PortName = "mth-green"
 			$PrinterDetails.PrinterComment = "Brother HL-L8360CDW"
-			$PrinterDetails.PrinterLocation = "CHEK 10M"
-			$PrinterDetails.DriverName = "Brother HL-L8360CDW series"
+			$PrinterDetails.PrinterLocation = "UNVH 212"
 		}
  		# XEROX
-  		"CRPM-GREEN" {
+		"CRPM-GREEN" {
 			$PrinterDetails.PortName = "crpm-green"
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
-			$PrinterDetails.PrinterLocation = "SCNC"
+			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
  		# LEXMARK
   		"BIO-GREEN" {
 			$PrinterDetails.PortName = "bio-green"
 			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
-			$PrinterDetails.PrinterLocation = "SCNC 108B"
+			$PrinterDetails.PrinterLocation = "SCNC 108"
 		}
   		# DELL
+  		"CSC-ORANGE" {
+			$PrinterDetails.PortName = "csc-orange"
+			$PrinterDetails.PrinterComment = "Dell Color Printer S3840cdn"
+			$PrinterDetails.PrinterLocation = "CHEK 203A"
+		}
+  		"OEWRI-RED" {
+			$PrinterDetails.PortName = "dell0cb374"
+			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
+			$PrinterDetails.PrinterLocation = "SCNC 343"
+		}
  		# CANON
+     		"SEES-PLOTTER" {
+			$PrinterDetails.PortName = "sees-plotter"
+			$PrinterDetails.PrinterComment = "Canon imagePROGRAF iPF825"
+			$PrinterDetails.PrinterLocation = "SCNC 210A"
+		}
   	}
 	return $PrinterDetails
 }
