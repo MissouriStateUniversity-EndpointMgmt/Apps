@@ -169,18 +169,17 @@ if ($PrinterData.PortName -ne $null) {
 		# Add driver to driver store
 		Write-Output "Adding Driver to Windows DriverStore using INF ""$($INFPath)"""
   
-		# Check if running in a MCM TS, need to use SysNative path if Intune
-		try { 
-			$TSEnv = New-Object -ComObject Microsoft.SMS.TSEnvironment
-   			Write-Output "The script is currently running from a SCCM Task Sequence."
+		# Check if running as a 32-bit process on a 64-bit client
+		if (Test-Path "C:\Windows\SysNative\pnputil.exe") {
+  			Write-Output "The script is running as a 32-bit process on a 64-bit client."
+	 		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
+		}
+		else {
+  			Write-Output "The script is running as a native process."
 	  		Start-Process pnputil.exe -ArgumentList $INFARGS -Wait -NoNewWindow
 		}
-		catch {
-  			Write-Output "The script is not currently running from a SCCM Task Sequence."
-	 		Start-Process -FilePath "C:\Windows\SysNative\pnputil.exe" -ArgumentList $INFARGS -Wait -NoNewWindow
-  		}
 
-  		# Install driver
+    		# Install driver
 		$DriverExist = Get-Printerport -Name $DriverName -ErrorAction SilentlyContinue
 		if (-not $DriverExist) {
 			Write-Output "Adding Printer Driver ""$($DriverName)"""
