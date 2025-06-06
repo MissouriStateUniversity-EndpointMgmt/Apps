@@ -83,7 +83,7 @@ function Get-PrinterData {
 		"SEES-RED" {
 			$PrinterDetails.PortName = "sees-red"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet CP4005"
-			$PrinterDetails.PrinterLocation = "SCNC 342"
+			$PrinterDetails.PrinterLocation = "SCNC 318"
 		}
 		"SEES-INDIGO" {
 			$PrinterDetails.PortName = "sees-indigo"
