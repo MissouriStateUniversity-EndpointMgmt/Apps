@@ -1,29 +1,20 @@
-## Install Info
-$InstallArgs = "/S"
-
 function RemoveApp {
-	## Uninstall Info
-	$UninstallName = "7-Zip*"
+ 	## Uninstall Info
+  	$UninstallString = "C:\Program Files\7-Zip\Uninstall.exe"
 	$UninstallArgs = "/S"
-	$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 
+ 	# Uninstall
 	Write-Output 'Uninstall'
-
-	# Uninstall MSI
-	Install-PackageProvider -Name NuGet -Force | Out-Null
-	Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
-
-	# Uninstall EXE
-	Get-ChildItem -Path $Path -ErrorAction SilentlyContinue | Get-ItemProperty | Where-Object {$_.DisplayName -like $UninstallName} | Foreach { Start-Process $_.UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
+	Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs
 }
 
 try {
 
  	if ($Action -ieq 'Install')
 	{
-		Write-Output 'Uninstall old versions'
-		RemoveApp
-
+		## Install Info
+		$InstallArgs = "/S"
+  
 		## GitHub Information
 		$repo = "ip7z/7zip"
 		$FileNamePattern = "*x64.exe"
@@ -37,17 +28,16 @@ try {
 		$ProgressPreference = 'SilentlyContinue'
 		Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
+		# Remove Old Versions
+		RemoveApp
+
 		# Install
    		Write-Output 'Install'
 		Start-Process $FilePath -Wait -Passthru -ArgumentList $InstallArgs
-
  	}
 	elseif ($Action -ieq 'Remove')
 	{
-		Write-Output 'Uninstall (new)'
-  		$UninstallString = "C:\Program Files\7-Zip\Uninstall.exe"
-	    	$UninstallArgs = "/S"
-		Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs
+		RemoveApp
  	}
 
 }
