@@ -20,7 +20,7 @@ try {
  	if ($Action -ieq 'Install')
 	{
 		Write-Output 'Uninstall old versions'
-		RemoveApp()
+		RemoveApp
 
 		## GitHub Information
 		$repo = "ip7z/7zip"
@@ -43,7 +43,7 @@ try {
 	elseif ($Action -ieq 'Remove')
 	{
 		Write-Output 'Uninstall'
-		RemoveApp()
+		RemoveApp
  	}
 
 }
