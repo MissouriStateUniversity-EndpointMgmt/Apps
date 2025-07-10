@@ -1,52 +1,49 @@
 ## Install Info
 $InstallArgs = "/S"
 
-# GitHub Information
-$repo = "ip7z/7zip"
-$FileNamePattern = "*x64.exe"
+function RemoveApp() {
+	## Uninstall Info
+	$UninstallName = "7-Zip*"
+	$UninstallArgs = "/S"
+	$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 
-## Uninstall Info
-$UninstallName = "7-Zip*"
-$UninstallArgs = "/S"
-$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
+	# Uninstall MSI
+	Install-PackageProvider -Name NuGet -Force | Out-Null
+	Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
+
+	# Uninstall EXE
+	Get-ChildItem -Path $Path -ErrorAction SilentlyContinue | Get-ItemProperty | Where-Object {$_.DisplayName -like $UninstallName} | Foreach { Start-Process $_.UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
+}
 
 try {
 
  	if ($Action -ieq 'Install')
 	{
-		Write-Output 'Install'
-	
-	        ## Uninstall MSI
-	        Install-PackageProvider -Name NuGet -Force | Out-Null
-	        Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
-	        
-	        ## Uninstall EXE
-	        Get-ChildItem -Path $Path -ErrorAction SilentlyContinue | Get-ItemProperty | Where-Object {$_.DisplayName -like $UninstallName} | Foreach { Start-Process $_.UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
-	
-	        # Download new application file
-	        $ReleasesURL = "https://api.github.com/repos/$repo/releases/latest"
-	        $DownloadURI = ((Invoke-RestMethod -Method GET -Uri $ReleasesURL).assets | Where-Object name -like $FileNamePattern).browser_download_url
+		Write-Output 'Uninstall old versions'
+		RemoveApp()
+
+		## GitHub Information
+		$repo = "ip7z/7zip"
+		$FileNamePattern = "*x64.exe"
+		$ReleasesURL = "https://api.github.com/repos/$repo/releases/latest"
+		$DownloadURI = ((Invoke-RestMethod -Method GET -Uri $ReleasesURL).assets | Where-Object name -like $FileNamePattern).browser_download_url
+
+		# Download new application file
 		Write-Output $DownloadURI
 		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath $(Split-Path -Path $DownloadURI -Leaf)
 		Write-Output $FilePath
-	        $ProgressPreference = 'SilentlyContinue'
-	        Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
-			
-		# Install
-	        Start-Process $FilePath -Wait -Passthru -ArgumentList $InstallArgs
+		$ProgressPreference = 'SilentlyContinue'
+		Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
-	}
+		# Install
+   		Write-Output 'Install'
+		Start-Process $FilePath -Wait -Passthru -ArgumentList $InstallArgs
+
+ 	}
 	elseif ($Action -ieq 'Remove')
 	{
 		Write-Output 'Uninstall'
-
-	        ## Uninstall MSI
-	        Install-PackageProvider -Name NuGet -Force | Out-Null
-	        Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
-	
-	        ## Uninstall EXE
-	        Get-ChildItem -Path $Path -ErrorAction SilentlyContinue | Get-ItemProperty | Where-Object {$_.DisplayName -like $UninstallName} | Foreach { Start-Process $_.UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
-
+		RemoveApp()
  	}
 
 }
