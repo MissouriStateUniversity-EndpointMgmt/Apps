@@ -1,7 +1,7 @@
 ## Install Info
 $InstallArgs = "/S"
 
-function RemoveApp() {
+function RemoveApp {
 	## Uninstall Info
 	$UninstallName = "7-Zip*"
 	$UninstallArgs = "/S"
