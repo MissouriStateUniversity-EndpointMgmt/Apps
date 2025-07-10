@@ -5,7 +5,7 @@ function RemoveApp {
 
  	# Uninstall
 	Write-Output 'Uninstall'
-	Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs
+ 	if ($UninstallString) {	Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
 }
 
 try {
