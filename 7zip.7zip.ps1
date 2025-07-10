@@ -7,6 +7,8 @@ function RemoveApp {
 	$UninstallArgs = "/S"
 	$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 
+	Write-Output 'Uninstall'
+
 	# Uninstall MSI
 	Install-PackageProvider -Name NuGet -Force | Out-Null
 	Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
@@ -42,8 +44,10 @@ try {
  	}
 	elseif ($Action -ieq 'Remove')
 	{
-		Write-Output 'Uninstall'
-		RemoveApp
+		Write-Output 'Uninstall (new)'
+  		$UninstallString = "C:\Program Files\7-Zip\Uninstall.exe"
+	    	$UninstallArgs = "/S"
+		Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs
  	}
 
 }
