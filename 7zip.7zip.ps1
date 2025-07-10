@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.54'
+Write-Output 'File Version 1.05'
 
 function RemoveApp {
 	$ProgramFilePath = "7-Zip\Uninstall.exe"
