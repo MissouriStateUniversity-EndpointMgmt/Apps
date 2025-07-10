@@ -1,10 +1,9 @@
-Write-Output 'File Version 1.09'
+Write-Output 'File Version 1.10'
 
 function RemoveApp {
 	$ProgramFilePath = "7-Zip\Uninstall.exe"
 	$UninstallArgs = "/S"
-	$UninstallString = (Get-Item -Path "C:\Program Files\$ProgramFilePath","C:\Program Files (x86)\$ProgramFilePath" -ErrorAction SilentlyContinue)
-	$UninstallString | ForEach-Object { Start-Process $_.FullName -Wait -PassThru -ArgumentList $UninstallArgs }
+	(Get-Item -Path "C:\Program Files\$ProgramFilePath","C:\Program Files (x86)\$ProgramFilePath" -ErrorAction SilentlyContinue) | ForEach-Object { Start-Process $_.FullName -Wait -PassThru -ArgumentList $UninstallArgs }
 }
 
 try {
