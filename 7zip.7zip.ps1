@@ -1,11 +1,8 @@
 function RemoveApp {
- 	## Uninstall Info
-  	$UninstallString = "C:\Program Files\7-Zip\Uninstall.exe"
+	$ProgramFilePath = "7-Zip\Uninstall.exe"
 	$UninstallArgs = "/S"
-
- 	# Uninstall
-	Write-Output 'Uninstall'
- 	if ($UninstallString | Test-Path) { Start-Process $UninstallString -Wait -PassThru -ArgumentList $UninstallArgs }
+	$UninstallString = [String](Get-Item -Path "$Env:ProgramFiles\$ProgramFilePath","${Env:ProgramFiles(x86)}\$ProgramFilePath" -ErrorAction SilentlyContinue)
+	$UninstallString | ForEach-Object { Start-Process $_ -Wait -PassThru -ArgumentList $UninstallArgs }
 }
 
 try {
