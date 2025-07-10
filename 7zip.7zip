@@ -25,7 +25,7 @@ try {
         # Download new application file
         $ReleasesURL = "https://api.github.com/repos/$repo/releases/latest"
         $DownloadURI = ((Invoke-RestMethod -Method GET -Uri $ReleasesURL).assets | Where-Object name -like $FileNamePattern).browser_download_url
-	$FilePath = Join-Path -Path $PSScriptRoot -ChildPath $(Split-Path -Path $DownloadURI -Leaf)
+	$FilePath = Join-Path -Path (Get-Location).Path -ChildPath $(Split-Path -Path $DownloadURI -Leaf)
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 		
