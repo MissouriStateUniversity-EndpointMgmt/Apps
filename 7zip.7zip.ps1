@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.11'
+Write-Output 'File Version 1.12'
 
 function RemoveApp {
 	## Uninstall Info
@@ -26,9 +26,9 @@ try {
 		$FileNamePattern = "*x64.exe"
 		$ReleasesURL = "https://api.github.com/repos/$repo/releases/latest"
 		$DownloadURI = ((Invoke-RestMethod -Method GET -Uri $ReleasesURL).assets | Where-Object name -like $FileNamePattern).browser_download_url
+		Write-Output $DownloadURI
 
 		# Download new application file
-		Write-Output $DownloadURI
 		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath $(Split-Path -Path $DownloadURI -Leaf)
 		Write-Output $FilePath
 		$ProgressPreference = 'SilentlyContinue'
