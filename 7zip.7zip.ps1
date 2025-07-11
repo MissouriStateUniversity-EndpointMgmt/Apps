@@ -1,8 +1,16 @@
-Write-Output 'File Version 1.10'
+Write-Output 'File Version 1.11'
 
 function RemoveApp {
-	$ProgramFilePath = "7-Zip\Uninstall.exe"
+	## Uninstall Info
+	$UninstallName = "7-Zip*"
 	$UninstallArgs = "/S"
+	$ProgramFilePath = "7-Zip\Uninstall.exe"
+
+ 	## Uninstall MSI
+	Install-PackageProvider -Name NuGet -Force | Out-Null
+	Get-Package -Name $UninstallName -ErrorAction SilentlyContinue | Uninstall-Package
+
+ 	## Uninstall EXE
 	(Get-Item -Path "C:\Program Files\$ProgramFilePath","C:\Program Files (x86)\$ProgramFilePath" -ErrorAction SilentlyContinue) | ForEach-Object { Start-Process $_.FullName -Wait -PassThru -ArgumentList $UninstallArgs }
 }
 
