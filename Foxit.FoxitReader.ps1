@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.00'
+Write-Output 'File Version 1.01'
 
 function RemoveApp {
     ## Uninstall Info
@@ -32,7 +32,7 @@ try {
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
         ## Install Info
-        $InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""1"" MAKEDEFAULT=""0"" VIEWINBROWSER=""0"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""0"" ADDLOCAL=""FX_PDFVIEWER"""
+        $InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"""
 
         # Install
         Write-Output 'Install'
