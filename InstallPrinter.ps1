@@ -19,20 +19,20 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4528A"
 			$PrinterDetails.PrinterLocation = "SCNC 110F"
 		}
-  		"CHM-BLACK" {
-			$PrinterDetails.PortName = "chm-black"
-			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6528A"
-			$PrinterDetails.PrinterLocation = "SCNC 410"
-		}
 		"BIO-BLACK" {
 			$PrinterDetails.PortName = "bio-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5508A"
 			$PrinterDetails.PrinterLocation = "SCNC 210A"
 		}
-		"SEES-BLACK" {
+  		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
 			$PrinterDetails.PrinterLocation = "SCNC 310"
+		}
+    		"CHM-BLACK" {
+			$PrinterDetails.PortName = "chm-black"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6528A"
+			$PrinterDetails.PrinterLocation = "SCNC 410"
 		}
 		"CRPM-BLACK" {
 			$PrinterDetails.PortName = "crpm-black"
