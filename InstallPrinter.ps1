@@ -30,7 +30,7 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterLocation = "SCNC 310"
 		}
     		"CHM-BLACK" {
-			$PrinterDetails.PortName = "chm-black"
+			$PrinterDetails.PortName = "mfp14263477"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6528A"
 			$PrinterDetails.PrinterLocation = "SCNC 410"
 		}
