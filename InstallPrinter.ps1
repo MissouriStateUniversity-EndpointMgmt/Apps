@@ -54,6 +54,22 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6518A"
 			$PrinterDetails.PrinterLocation = "UNVH 006"
 		}
+  		"EGR-RED" {
+			$PrinterDetails.PortName = "mfp14226282"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
+			$PrinterDetails.PrinterLocation = "PCTR 2001"
+		}
+		"EGR-GREEN" {
+			$PrinterDetails.PortName = "mfp15810788"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO2525AC"
+			$PrinterDetails.PrinterLocation = "PCTR 2004A"
+		}
+		"PHY-YELLOW" {
+			$PrinterDetails.PortName = "MFP12015819"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5508A"
+			$PrinterDetails.PrinterLocation = "KEMP 0101"
+		}
+  
  		# HP
 		"CNAS-BLUE" {
 			$PrinterDetails.PortName = "cnas-blue"
@@ -115,24 +131,28 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP LaserJet 200 Color M251nw"
 			$PrinterDetails.PrinterLocation = "SCNC 305"
 		}
+  
   		# BROTHER
-		"MTH-GREEN" {
+    		"MTH-GREEN" {
 			$PrinterDetails.PortName = "mth-green"
 			$PrinterDetails.PrinterComment = "Brother HL-L8360CDW"
 			$PrinterDetails.PrinterLocation = "UNVH 212"
 		}
+  
  		# XEROX
 		"CRPM-GREEN" {
 			$PrinterDetails.PortName = "crpm-green"
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
 			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
+  
  		# LEXMARK
   		"BIO-GREEN" {
 			$PrinterDetails.PortName = "bio-green"
 			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
 			$PrinterDetails.PrinterLocation = "SCNC 108"
 		}
+  
   		# DELL
   		"CSC-ORANGE" {
 			$PrinterDetails.PortName = "csc-orange"
@@ -144,12 +164,14 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
 			$PrinterDetails.PrinterLocation = "SCNC 343"
 		}
+  
  		# CANON
      		"SEES-PLOTTER" {
 			$PrinterDetails.PortName = "sees-plotter"
 			$PrinterDetails.PrinterComment = "Canon imagePROGRAF iPF825"
 			$PrinterDetails.PrinterLocation = "SCNC 210A"
 		}
+  
   	}
 	return $PrinterDetails
 }
