@@ -145,6 +145,11 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
 			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
+    		"CHM-WHITE" {
+			$PrinterDetails.PortName = "xc-a572ad"
+			$PrinterDetails.PrinterComment = "Xerox VersaLink C405"
+			$PrinterDetails.PrinterLocation = "TEMP 0423"
+		}
   
  		# LEXMARK
   		"BIO-GREEN" {
@@ -152,7 +157,7 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
 			$PrinterDetails.PrinterLocation = "SCNC 108"
 		}
-  
+
   		# DELL
   		"CSC-ORANGE" {
 			$PrinterDetails.PortName = "csc-orange"
