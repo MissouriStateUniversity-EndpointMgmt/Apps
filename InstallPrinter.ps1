@@ -136,6 +136,11 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP LaserJet 200 Color M251nw"
 			$PrinterDetails.PrinterLocation = "SCNC 305"
 		}
+		"EGR-YELLOW" {
+			$PrinterDetails.PortName = "npi08be86"
+			$PrinterDetails.PrinterComment = "HP Color LaserJet M254dw"
+			$PrinterDetails.PrinterLocation = "PCTR 2032"
+		}
   
   		# BROTHER
     		"MTH-GREEN" {
