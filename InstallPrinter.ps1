@@ -150,6 +150,11 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C405"
 			$PrinterDetails.PrinterLocation = "TEMP 0423"
 		}
+    		"PHY-RED" {
+			$PrinterDetails.PortName = "xc-d32bd8"
+			$PrinterDetails.PrinterComment = "Xerox WorkCentre 6515"
+			$PrinterDetails.PrinterLocation = "KEMP 0101"
+		}
   
  		# LEXMARK
   		"BIO-GREEN" {
