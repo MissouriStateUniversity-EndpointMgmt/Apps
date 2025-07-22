@@ -67,7 +67,7 @@ function Get-PrinterData {
 		"PHY-YELLOW" {
 			$PrinterDetails.PortName = "MFP12015819"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5508A"
-			$PrinterDetails.PrinterLocation = "KEMP 0101"
+			$PrinterDetails.PrinterLocation = "KEMP 101"
 		}
   
  		# HP
@@ -126,6 +126,11 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP LaserJet P3005"
 			$PrinterDetails.PrinterLocation = "SCNC 403"
 		}
+		"CHM-TAN" {
+			$PrinterDetails.PortName = "npi6c137e"
+			$PrinterDetails.PrinterComment = "HP LaserJet 400 M401n"
+			$PrinterDetails.PrinterLocation = "TEMP 431"
+		}
 		"OEWRI-GREEN" {
 			$PrinterDetails.PortName = "oewri-green"
 			$PrinterDetails.PrinterComment = "HP LaserJet 200 Color M251nw"
@@ -148,12 +153,12 @@ function Get-PrinterData {
     		"CHM-WHITE" {
 			$PrinterDetails.PortName = "xc-a572ad"
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C405"
-			$PrinterDetails.PrinterLocation = "TEMP 0423"
+			$PrinterDetails.PrinterLocation = "TEMP 423"
 		}
     		"PHY-RED" {
 			$PrinterDetails.PortName = "xc-d32bd8"
 			$PrinterDetails.PrinterComment = "Xerox WorkCentre 6515"
-			$PrinterDetails.PrinterLocation = "KEMP 0101"
+			$PrinterDetails.PrinterLocation = "KEMP 101"
 		}
   
  		# LEXMARK
