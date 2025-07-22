@@ -121,11 +121,6 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP LaserJet P2055dn"
 			$PrinterDetails.PrinterLocation = "KEMP 119D"
 		}
-		"CHM-RED" {
-			$PrinterDetails.PortName = "npi23e8fb"
-			$PrinterDetails.PrinterComment = "HP LaserJet P3005"
-			$PrinterDetails.PrinterLocation = "SCNC 403"
-		}
 		"CHM-TAN" {
 			$PrinterDetails.PortName = "npi6c137e"
 			$PrinterDetails.PrinterComment = "HP LaserJet 400 M401n"
