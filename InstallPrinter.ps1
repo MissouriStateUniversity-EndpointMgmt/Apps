@@ -167,7 +167,12 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
 			$PrinterDetails.PrinterLocation = "SCNC 108"
 		}
-
+  		"PHY-GREEN" {
+			$PrinterDetails.PortName = "phy-green"
+			$PrinterDetails.PrinterComment = "Lexmark MS421dn"
+			$PrinterDetails.PrinterLocation = "KEMP 226A"
+		}
+  
   		# DELL
   		"CSC-ORANGE" {
 			$PrinterDetails.PortName = "csc-orange"
