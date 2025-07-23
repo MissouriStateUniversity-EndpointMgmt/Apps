@@ -57,12 +57,12 @@ function Get-PrinterData {
   		"EGR-RED" {
 			$PrinterDetails.PortName = "mfp14226282"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
-			$PrinterDetails.PrinterLocation = "PCTR 2001"
+			$PrinterDetails.PrinterLocation = "PCTR 2004A"
 		}
 		"EGR-GREEN" {
 			$PrinterDetails.PortName = "mfp15810788"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO2525AC"
-			$PrinterDetails.PrinterLocation = "PCTR 2004A"
+			$PrinterDetails.PrinterLocation = "PCTR 2001"
 		}
 		"PHY-YELLOW" {
 			$PrinterDetails.PortName = "MFP12015819"
