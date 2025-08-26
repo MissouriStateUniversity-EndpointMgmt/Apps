@@ -17,16 +17,16 @@ try {
         $LatestVersion = (Invoke-RestMethod -UseBasicParsing -Method GET -Uri $ReleasesURL).name -match "^\d+(\.\d+){1,3}$" | Sort-Object -Descending | Select-Object -First 1
         $LatestURL = "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/d/Dell/CommandUpdate/$LatestVersion/Dell.CommandUpdate.installer.yaml"
         $Info = ((Invoke-RestMethod -UseBasicParsing -Method GET -Uri $LatestURL) | ConvertFrom-Yaml)
-        $DownloadURL = $Info.Installers.InstallerUrl
+        $DownloadURI = $Info.Installers.InstallerUrl
         $InstallArgs = $Info.InstallerSwitches.Silent
 		Write-Output $DownloadURI
 		Write-Output $InstallArgs
 
 		# Download new application file
-		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath $(Split-Path -Path $DownloadURI -Leaf)
-		Write-Output $FilePath
-		$ProgressPreference = 'SilentlyContinue'
-		Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
+        $FilePath = Join-Path -Path (Get-Location).Path -ChildPath "DellCommandUpdate.exe"
+        $ProgressPreference = 'SilentlyContinue'
+        $userAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+        Invoke-WebRequest -Uri $DownloadURI -Out $filePath -UserAgent $userAgent
         
 		# Remove Old Versions
 		RemoveApp
