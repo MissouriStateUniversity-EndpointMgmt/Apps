@@ -17,7 +17,6 @@ try {
 		Write-Output $LatestVersion
         $LatestURL = "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/d/Dell/CommandUpdate/$LatestVersion/Dell.CommandUpdate.installer.yaml"
 		Write-Output $LatestURL
-  		Write-Host $yamlUrl
 		# Download and parse YAML content
 		$yamlContent = Invoke-RestMethod -Uri $LatestURL -Headers @{ 'User-Agent' = 'PowerShell' }
 		$DownloadURI = ($yamlContent -join "`n") -match "InstallerUrl:\s+(http.*)" | ForEach-Object { $Matches[1] }
