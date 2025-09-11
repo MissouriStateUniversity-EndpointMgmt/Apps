@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.00'
+Write-Output 'File Version 2.00'
 
 function RemoveApp {
     ## Uninstall MSI
@@ -12,18 +12,16 @@ try {
  	if ($Action -ieq 'Install')
 	{
         ## Release Information from GitHub winget-pkgs
-		if (-not (Get-Module powershell-yaml -ListAvailable))
-  		{
-            Find-Module -Name PowerShellGet | Install-Module -Force
-			Import-Module PowerShellGet
-            Install-Module powershell-yaml -Force -Repository PSGallery			
-		}
         $ReleasesURL = 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/d/Dell/CommandUpdate'
         $LatestVersion = (Invoke-RestMethod -UseBasicParsing -Method GET -Uri $ReleasesURL).name -match "^\d+(\.\d+){1,3}$" | Sort-Object -Descending | Select-Object -First 1
+		Write-Output $LatestVersion
         $LatestURL = "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/d/Dell/CommandUpdate/$LatestVersion/Dell.CommandUpdate.installer.yaml"
-        $Info = ((Invoke-RestMethod -UseBasicParsing -Method GET -Uri $LatestURL) | ConvertFrom-Yaml)
-        $DownloadURI = $Info.Installers.InstallerUrl
-        $InstallArgs = $Info.InstallerSwitches.Silent
+		Write-Output $LatestURL
+  		Write-Host $yamlUrl
+		# Download and parse YAML content
+		$yamlContent = Invoke-RestMethod -Uri $LatestURL -Headers @{ 'User-Agent' = 'PowerShell' }
+		$DownloadURI = ($yamlContent -join "`n") -match "InstallerUrl:\s+(http.*)" | ForEach-Object { $Matches[1] }
+		$InstallArgs = ($yamlContent -join "`n") -match "Silent:\s*(.+)" | ForEach-Object { $Matches[1] }
 		Write-Output $DownloadURI
 		Write-Output $InstallArgs
 
