@@ -179,10 +179,15 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Dell Color Printer S3840cdn"
 			$PrinterDetails.PrinterLocation = "CHEK 203A"
 		}
-  		"OEWRI-RED" {
-			$PrinterDetails.PortName = "dell0cb374"
+  		"CNAS-RED" {
+			$PrinterDetails.PortName = "cnas-red"
 			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
-			$PrinterDetails.PrinterLocation = "SCNC 343"
+			$PrinterDetails.PrinterLocation = "SCNC 110B"
+		}
+  		"OEWRI-RED" {
+			$PrinterDetails.PortName = "oewri-red"
+			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
+			$PrinterDetails.PrinterLocation = "SCNC 305"
 		}
   
  		# CANON
