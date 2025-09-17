@@ -24,12 +24,17 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5508A"
 			$PrinterDetails.PrinterLocation = "SCNC 210A"
 		}
+		"BIO-BLUE" {
+			$PrinterDetails.PortName = "bio-blue"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
+			$PrinterDetails.PrinterLocation = "SCNC 244"
+		}
   		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
 			$PrinterDetails.PrinterLocation = "SCNC 310"
 		}
-    		"CHM-BLACK" {
+    	"CHM-BLACK" {
 			$PrinterDetails.PortName = "mfp14263477"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6528A"
 			$PrinterDetails.PrinterLocation = "SCNC 410"
