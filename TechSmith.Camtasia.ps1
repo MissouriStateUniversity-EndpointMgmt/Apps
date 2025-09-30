@@ -4,9 +4,6 @@ try {
 
  	if ($Action -ieq 'Install')
 	{
-		## Update Key 
-		$ProductKey = "HHCKM-QX5Z4-MLCAJ-YEDDJ-B6CEM"
-  
   		## Release Information
 		$DownloadURI = "https://download.techsmith.com/camtasiastudio/releases/camtasia.msi"
 		Write-Output $DownloadURI
