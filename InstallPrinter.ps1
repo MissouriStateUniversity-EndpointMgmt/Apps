@@ -155,12 +155,12 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
 			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
-    		"CHM-WHITE" {
+    	"CHM-WHITE" {
 			$PrinterDetails.PortName = "xc-a572ad"
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C405"
-			$PrinterDetails.PrinterLocation = "TEMP 423"
+			$PrinterDetails.PrinterLocation = "SCNC 410D"
 		}
-    		"PHY-RED" {
+    	"PHY-RED" {
 			$PrinterDetails.PortName = "xc-d32bd8"
 			$PrinterDetails.PrinterComment = "Xerox WorkCentre 6515"
 			$PrinterDetails.PrinterLocation = "KEMP 101"
