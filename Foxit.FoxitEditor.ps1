@@ -21,18 +21,30 @@ try {
         RemoveApp
 
         ## Release Information
-        $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-PDF-Editor-Suite-Pro-Teams&version=&platform=Windows&country=US&language=ML&package_type=msi"
+        $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-PDF-Editor-Suite-Pro-Teams&version=&platform=Windows&country=US&language=ML&package_type=zip"
         Write-Output $DownloadURI
-        $InstallFile = (Invoke-WebRequest -Method Head -Uri $DownloadURI -UseBasicParsing -ErrorAction SilentlyContinue).BaseResponse.ResponseUri.Segments[-1].Replace('%20','')
 
         # Download new application file
-        $FilePath = Join-Path -Path (Get-Location).Path -ChildPath $InstallFile
+		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath "FoxitPDFEditor.zip"
+		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
-        ## Install Info
-        $InstallArgs = "/i $FilePath /qn"
+        # Extract ZIP
+		Expand-Archive $FilePath -DestinationPath (Get-Location).Path
+
+		## Install Info
+		$InstallFile = Resolve-Path "FoxitPDF*.msi"
+		$UpdateFile = Resolve-Path "FoxitPDF*.msp"
+		If ($UpdateFile -ne $null)
+		{
+			$InstallArgs = "/i $InstallFile /qn /update $UpdateFile"
+		}
+		Else
+		{
+			$InstallArgs = "/i $InstallFile /qn"
+		}
 
         # Install
         Write-Output 'Install'
