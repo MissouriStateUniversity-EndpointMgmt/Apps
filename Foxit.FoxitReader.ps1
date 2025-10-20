@@ -21,19 +21,31 @@ try {
         RemoveApp
 
         ## Release Information
-        $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-Enterprise-Reader&version=&platform=Windows&language=English&package_type=msi"
+        $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-Enterprise-Reader&version=&platform=Windows&language=English&package_type=zip"
         Write-Output $DownloadURI
-        $InstallFile = (Invoke-WebRequest -Method Head -Uri $DownloadURI -UseBasicParsing -ErrorAction SilentlyContinue).BaseResponse.ResponseUri.Segments[-1].Replace('%20','')
 
         # Download new application file
-        $FilePath = Join-Path -Path (Get-Location).Path -ChildPath $InstallFile
+		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath "FoxitPDFReader.zip"
+		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
-        ## Install Info
-        $InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"""
+        # Extract ZIP
+		Expand-Archive $FilePath -DestinationPath (Get-Location).Path
 
+		## Install Info
+		$InstallFile = Resolve-Path "FoxitPDF*.msi"
+		$UpdateFile = Resolve-Path "FoxitPDF*.msp"
+		If ($UpdateFile -ne $null)
+		{
+        	$InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"" /update $UpdateFile"
+		}
+		Else
+		{
+        	$InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"""
+		}
+		
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
