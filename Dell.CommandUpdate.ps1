@@ -13,7 +13,7 @@ try {
 	{
         ## Release Information from GitHub winget-pkgs
         $ReleasesURL = 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/d/Dell/CommandUpdate'
-        $LatestVersion = (Invoke-RestMethod -UseBasicParsing -Method GET -Uri $ReleasesURL).name -match "^\d+(\.\d+){1,3}$" | Sort-Object -Descending | Select-Object -First 1
+        $LatestVersion = (Invoke-RestMethod -UseBasicParsing -Method GET -Uri $ReleasesURL).name -match "^\d+(\.\d+){1,3}$" | Sort-Object { $_ -as [version]  } -Descending | Select-Object -First 1
 		Write-Output $LatestVersion
         $LatestURL = "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/d/Dell/CommandUpdate/$LatestVersion/Dell.CommandUpdate.installer.yaml"
 		Write-Output $LatestURL
