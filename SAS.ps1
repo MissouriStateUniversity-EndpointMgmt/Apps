@@ -8,9 +8,15 @@ try {
  	if ($Action -ieq 'Install')
 	{
         # Download License File
-        Invoke-WebRequest -Uri "https://api.github.com/repos/MissouriStateUniversity-EndpointMgmt/MCM/contents/$LicenseFile" -Headers @{Authorization = "token $AccessToken"} -OutFile $LicenseFile
+        Invoke-WebRequest -Uri "https://api.github.com/repos/MissouriStateUniversity-EndpointMgmt/MCM/contents/$LicenseFile" -Headers @{Authorization = "token $AccessToken"} -OutFile C:\Windows\Temp\$LicenseFile
+		$SIDfile = Resolve-Path "C:\Windows\Temp\$LicenseFile"
+		
+		if ($SIDfile -ne $null)
+		{
 
- 	}
+		}
+
+	}
     elseif ($Action -ieq 'Remove')
     {
         ## Uninstall
