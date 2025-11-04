@@ -21,30 +21,20 @@ try {
 			$UninstallProp = "uninstall.properties"
 			$RenewVar = $InstallPath + "SASRenewalUtility\9.4\SASRenew.exe"
 			$RenewArgs = "-s `"datafile:$SIDfile`""
-		
-			try {
-				## perform your install here
-				## replace text in sdwresponse.properties with the path to the license file
-				((Get-Content -path sdwresponse.properties -Raw) -replace ' SAS_INSTALLATION_DATA=SID_FILE',$SIDreplace) | Set-Content -Path $ResponseProp
-				## install
-				Start-Process -FilePath setup.exe -ArgumentList $InstallArgs -Wait -NoNewWindow
-		
-				if (Test-Path $InstallPath) {
-					## copy uninstall file
-					Copy-Item $UninstallProp -Destination $InstallPath
-					## program might not licnese during install so need to run SASRenew to license
-					## enable NetFx3 (required for SASRenew?)
-					Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
-					## renew license program
-					Invoke-Command -ScriptBlock { Start-Process -FilePath $RenewVar -ArgumentList $RenewArgs -Wait }
-				}
-				## set exit return code to success value
-				$returnCode = 0
-			}
-			catch {
-				## handle/log the errors, etc.
-				## set exit return code to error value
-				$returnCode = 1
+
+			# Replace text in sdwresponse.properties with the path to the license file
+			((Get-Content -path sdwresponse.properties -Raw) -replace ' SAS_INSTALLATION_DATA=SID_FILE',$SIDreplace) | Set-Content -Path $ResponseProp
+			# Install
+			Start-Process -FilePath setup.exe -ArgumentList $InstallArgs -Wait -NoNewWindow
+	
+			if (Test-Path $InstallPath) {
+				# Copy uninstall file
+				Copy-Item $UninstallProp -Destination $InstallPath
+				# Program might not licnese during install so need to run SASRenew to license
+				# Enable NetFx3 (required for SASRenew?)
+				Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
+				# Renew license program
+				Invoke-Command -ScriptBlock { Start-Process -FilePath $RenewVar -ArgumentList $RenewArgs -Wait }
 			}
 
 		}
