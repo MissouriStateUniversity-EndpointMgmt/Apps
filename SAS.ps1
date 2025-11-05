@@ -20,7 +20,7 @@ try {
 
 			# Install
 			$InstallFile = Join-Path -Path (Get-Location).Path -ChildPath "setup.exe"
-			$InstallArgs = "-wait -partial -lang en -responsefile " + $ResponseProp
+			$InstallArgs = "-wait -partialprompt -lang en -responsefile " + $ResponseProp
 			Start-Process -FilePath $InstallFile -ArgumentList $InstallArgs -Wait -NoNewWindow
 
 			$RenewUtil = "C:\Program Files\SASHome\SASRenewalUtility\9.4\SASRenew.exe"
