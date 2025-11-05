@@ -1,5 +1,5 @@
 
-Write-Output 'File Version 1.06'
+Write-Output 'File Version 1.07'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 
@@ -13,29 +13,25 @@ try {
 		
 		if ($SIDfile -ne $null)
 		{
+			# Replace text in sdwresponse.properties with the path to the license file
 			$SIDreplace = " SAS_INSTALLATION_DATA=" + $SIDfile
 			$ResponseProp = "C:\Windows\Temp\sdwresponse.properties"
-			$InstallArgs = "-wait -quiet -lang en -responsefile " + $ResponseProp
-		
-			$InstallPath = "C:\Program Files\SASHome\"
-			$UninstallProp = "uninstall.properties"
-			$RenewVar = $InstallPath + "SASRenewalUtility\9.4\SASRenew.exe"
-			$RenewArgs = "-s `"datafile:$SIDfile`""
-
-			# Replace text in sdwresponse.properties with the path to the license file
 			((Get-Content -path sdwresponse.properties -Raw) -replace ' SAS_INSTALLATION_DATA=SID_FILE',$SIDreplace) | Set-Content -Path $ResponseProp
+
 			# Install
-			$FilePath = Join-Path -Path (Get-Location).Path -ChildPath "setup.exe"
-			Start-Process -FilePath $FilePath -ArgumentList $InstallArgs -Wait -NoNewWindow
+			$InstallFile = Join-Path -Path (Get-Location).Path -ChildPath "setup.exe"
+			$InstallArgs = "-wait -partial -lang en -responsefile " + $ResponseProp
+			Start-Process -FilePath $InstallFile -ArgumentList $InstallArgs -Wait -NoNewWindow
+
+			$RenewUtil = "C:\Program Files\SASHome\SASRenewalUtility\9.4\SASRenew.exe"
+			$RenewArgs = "-s `"datafile:$SIDfile`""
 	
-			if (Test-Path $InstallPath) {
-				# Copy uninstall file
-				Copy-Item $UninstallProp -Destination $InstallPath
+			if (Test-Path $RenewUtil) {
 				# Program might not licnese during install so need to run SASRenew to license
 				# Enable NetFx3 (required for SASRenew?)
-				Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
+				# Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
 				# Renew license program
-				Invoke-Command -ScriptBlock { Start-Process -FilePath $RenewVar -ArgumentList $RenewArgs -Wait }
+				Start-Process -FilePath $RenewUtil -ArgumentList $RenewArgs -Wait -NoNewWindow
 			}
 
 		}
