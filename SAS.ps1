@@ -15,7 +15,7 @@ try {
 		{
 			$SIDreplace = " SAS_INSTALLATION_DATA=" + $SIDfile
 			$ResponseProp = "C:\Windows\Temp\sdwresponse.properties"
-			$InstallArgs = "-wait -quiet -lang en -responsefile " + $ResponseProp
+			$InstallArgs = "-wait -partialprompt -lang en -responsefile " + $ResponseProp
 		
 			$InstallPath = "C:\Program Files\SASHome\"
 			$UninstallProp = "uninstall.properties"
