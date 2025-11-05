@@ -1,5 +1,5 @@
 
-Write-Output 'File Version 1.08'
+Write-Output 'File Version 1.09'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 
