@@ -40,7 +40,9 @@ try {
     elseif ($Action -ieq 'Remove')
     {
         ## Uninstall
-
+		$UninstallFile = "C:\Program Files\SASHome\SASDeploymentManager\9.4\sasdm.exe"
+		$UninstallArgs = "-quiet -wait -uninstallall"
+		Start-Process -FilePath $UninstallFile -ArgumentList $UninstallArgs -Wait -NoNewWindow
     }
 
 }
