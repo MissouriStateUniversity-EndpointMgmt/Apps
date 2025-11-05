@@ -1,10 +1,7 @@
 
-Write-Output 'File Version 1.03'
+Write-Output 'File Version 1.04'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
-Write-Host $LicenseFile
-Write-Host "Access Token"
-Write-Host $AccessToken
 
 try {
 
@@ -13,14 +10,12 @@ try {
         # Download License File
         Invoke-WebRequest -Uri "https://api.github.com/repos/MissouriStateUniversity-EndpointMgmt/MCM/contents/$LicenseFile" -Headers @{Authorization = "token $AccessToken"} -OutFile C:\Windows\Temp\$LicenseFile
 		$SIDfile = Resolve-Path "C:\Windows\Temp\$LicenseFile"
-		Write-Host $SIDfile
 		
 		if ($SIDfile -ne $null)
 		{
 			$SIDreplace = " SAS_INSTALLATION_DATA=" + $SIDfile
 			$ResponseProp = "C:\Windows\Temp\sdwresponse.properties"
 			$InstallArgs = "-wait -quiet -lang en -responsefile " + $ResponseProp
-			Write-Host $InstallArgs
 		
 			$InstallPath = "C:\Program Files\SASHome\"
 			$UninstallProp = "uninstall.properties"
