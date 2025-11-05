@@ -1,5 +1,5 @@
 
-Write-Output 'File Version 1.01'
+Write-Output 'File Version 1.02'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 Write-Host $LicenseFile
@@ -20,6 +20,7 @@ try {
 			$SIDreplace = " SAS_INSTALLATION_DATA=" + $SIDfile
 			$ResponseProp = "C:\Windows\Temp\sdwresponse.properties"
 			$InstallArgs = "-wait -quiet -lang en -responsefile " + $ResponseProp
+			Write-Host $InstallArgs
 		
 			$InstallPath = "C:\Program Files\SASHome\"
 			$UninstallProp = "uninstall.properties"
