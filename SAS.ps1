@@ -1,5 +1,5 @@
 
-Write-Output 'File Version 1.00'
+Write-Output 'File Version 1.01'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 Write-Host $LicenseFile
@@ -29,7 +29,7 @@ try {
 			# Replace text in sdwresponse.properties with the path to the license file
 			((Get-Content -path sdwresponse.properties -Raw) -replace ' SAS_INSTALLATION_DATA=SID_FILE',$SIDreplace) | Set-Content -Path $ResponseProp
 			# Install
-			Start-Process -FilePath setup.exe -ArgumentList $InstallArgs -Wait -NoNewWindow
+			Start-Process -FilePath "$PSScriptRoot\setup.exe" -ArgumentList $InstallArgs -Wait -NoNewWindow
 	
 			if (Test-Path $InstallPath) {
 				# Copy uninstall file
