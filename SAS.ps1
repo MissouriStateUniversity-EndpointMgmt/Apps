@@ -1,5 +1,5 @@
 
-Write-Output 'File Version 1.04'
+Write-Output 'File Version 1.05'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 
@@ -8,7 +8,7 @@ try {
  	if ($Action -ieq 'Install')
 	{
         # Download License File
-        Invoke-WebRequest -Uri "https://api.github.com/repos/MissouriStateUniversity-EndpointMgmt/MCM/contents/$LicenseFile" -Headers @{Authorization = "token $AccessToken"} -OutFile C:\Windows\Temp\$LicenseFile
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/MissouriStateUniversity-EndpointMgmt/MCM/refs/heads/main/$LicenseFile" -Method Get -Headers @{Authorization = "token $AccessToken"} -OutFile C:\Windows\Temp\$LicenseFile
 		$SIDfile = Resolve-Path "C:\Windows\Temp\$LicenseFile"
 		
 		if ($SIDfile -ne $null)
