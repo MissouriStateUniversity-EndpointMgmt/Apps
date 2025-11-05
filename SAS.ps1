@@ -3,6 +3,7 @@ Write-Output 'File Version 1.00'
 
 $LicenseFile = "SAS94_9D29YD_70085677_Win_X64_Wrkstn.txt"
 Write-Host $LicenseFile
+Write-Host "Access Token"
 Write-Host $AccessToken
 
 try {
