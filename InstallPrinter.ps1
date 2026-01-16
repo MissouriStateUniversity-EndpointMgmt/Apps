@@ -32,7 +32,7 @@ function Get-PrinterData {
   		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
-			$PrinterDetails.PrinterLocation = "SCNC 310"
+			$PrinterDetails.PrinterLocation = "SCNC 310E"
 		}
     	"CHM-BLACK" {
 			$PrinterDetails.PortName = "mfp14263477"
@@ -101,15 +101,20 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "HP Color LaserJet M402dne"
 			$PrinterDetails.PrinterLocation = "CHEK 001"
 		}
+		"SEES-GREEN" {
+			$PrinterDetails.PortName = "sees-green"
+			$PrinterDetails.PrinterComment = "HP Color LaserJet M750"
+			$PrinterDetails.PrinterLocation = "SCNC 300B"
+		}
 		"SEES-YELLOW" {
 			$PrinterDetails.PortName = "sees-yellow"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet CP4005"
-			$PrinterDetails.PrinterLocation = "SCNC 310"
+			$PrinterDetails.PrinterLocation = "SCNC 300B"
 		}
 		"SEES-RED" {
 			$PrinterDetails.PortName = "sees-red"
 			$PrinterDetails.PrinterComment = "HP Color LaserJet CP4005"
-			$PrinterDetails.PrinterLocation = "SCNC 318"
+			$PrinterDetails.PrinterLocation = "SCNC 300B"
 		}
 		"SEES-INDIGO" {
 			$PrinterDetails.PortName = "sees-indigo"
