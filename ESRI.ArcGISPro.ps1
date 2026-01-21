@@ -36,11 +36,11 @@ try {
         Install-Module -Name 7Zip4PowerShell -Force
         
         # Extract 7Zip file
-        Expand-7Zip -ArchiveFileName $FilePath -TargetPath (Get-Location).Path
+        Expand-7Zip -ArchiveFileName $FilePath -TargetPath "C:\Windows\Temp\"
 
         ## Install Info
-		$InstallFile = Resolve-Path "ArcGISPro\ArcGISPro.msi"
-		$UpdateFile = Resolve-Path "ArcGISPro\ArcGIS_Pro_*.msp"
+		$InstallFile = "C:\Windows\Temp\ArcGISPro\ArcGISPro.msi"
+		$UpdateFile = Resolve-Path "C:\Windows\Temp\ArcGISPro\ArcGIS_Pro_*.msp"
 		If ($UpdateFile -ne $null)
 		{
         	$InstallArgs = "/i $InstallFile /qb ALLUSERS=1 ACCEPTEULA=YES SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER LOCK_AUTH_SETTINGS=FALSE LICENSE_URL=""https://missouristate.maps.arcgis.com"" /update $UpdateFile"
