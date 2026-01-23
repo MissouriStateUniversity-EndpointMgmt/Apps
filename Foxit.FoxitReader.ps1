@@ -32,11 +32,11 @@ try {
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
         # Extract ZIP
-		Expand-Archive $FilePath -DestinationPath (Get-Location).Path
+		Expand-Archive $FilePath -DestinationPath "C:\Windows\Temp\"
 
 		## Install Info
-		$InstallFile = Resolve-Path "FoxitPDF*.msi"
-		$UpdateFile = Resolve-Path "FoxitPDF*.msp"
+		$InstallFile = Resolve-Path "C:\Windows\Temp\FoxitPDF*.msi"
+		$UpdateFile = Resolve-Path "C:\Windows\Temp\FoxitPDF*.msp"
 		If ($UpdateFile -ne $null)
 		{
         	$InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"" /update $UpdateFile"
