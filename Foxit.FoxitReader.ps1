@@ -39,11 +39,11 @@ try {
 		$UpdateFile = Resolve-Path "C:\Windows\Temp\FoxitPDF*.msp"
 		If ($UpdateFile -ne $null)
 		{
-        	$InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"" /update $UpdateFile"
+        	$InstallArgs = "/i $InstallFile /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"" /update $UpdateFile"
 		}
 		Else
 		{
-        	$InstallArgs = "/i $FilePath /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"""
+        	$InstallArgs = "/i $InstallFile /qn DESKTOP_SHORTCUT=""0"" MAKEDEFAULT=""1"" VIEWINBROWSER=""1"" LAUNCHCHECKDEFAULT=""0"" AUTO_UPDATE=""2"" ADDLOCAL=""FX_PDFVIEWER"""
 		}
 		
         # Install
