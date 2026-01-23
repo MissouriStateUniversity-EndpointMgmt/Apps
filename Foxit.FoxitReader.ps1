@@ -32,7 +32,7 @@ try {
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
         # Extract ZIP
-		Expand-Archive $FilePath -DestinationPath "C:\Windows\Temp\"
+		Expand-Archive $FilePath -DestinationPath "C:\Windows\Temp\" -Force
 
 		## Install Info
 		$InstallFile = Resolve-Path "C:\Windows\Temp\FoxitPDF*.msi"
