@@ -53,6 +53,7 @@ try {
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
+		Remove-Item C:\Windows\Temp\ArcGISPro -Recurse -Force
  	}
 	elseif ($Action -ieq 'Remove')
 	{
