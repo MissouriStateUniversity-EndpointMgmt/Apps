@@ -49,6 +49,8 @@ try {
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
+		Remove-Item $InstallFile -Force -ErrorAction SilentlyContinue
+		Remove-Item $UpdateFile -Force -ErrorAction SilentlyContinue
  	}
 	elseif ($Action -ieq 'Remove')
 	{
