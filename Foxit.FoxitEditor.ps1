@@ -22,7 +22,7 @@ try {
 
         ## Release Information
         $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-PDF-Editor-Suite-Pro-Teams&version=&platform=Windows&country=US&language=ML&package_type=zip"
-        // $DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
+        # $DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
         Write-Output $DownloadURI
 
         # Download new application file
