@@ -26,7 +26,7 @@ try {
         Write-Output $DownloadURI
 
         # Download new application file
-		$FilePath = Join-Path -Path "C:\Windows\Temp\FoxitPDFEditor.zip"
+		$FilePath = "C:\Windows\Temp\FoxitPDFEditor.zip"
 		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
