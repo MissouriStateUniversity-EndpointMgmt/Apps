@@ -1,6 +1,6 @@
 Write-Output 'File Version 1.01'
 
-$ReleasesURL = 'https://downloads.arcgis.com/dms/rest/download/secured/ArcGISPro_36_197382.exe?f=json&folder=software/arcgispro/EXEs/3.6'
+$ReleasesURL = "https://downloads.arcgis.com/dms/rest/download/secured/ArcGISPro_36_197382.exe?f=json&folder=software/arcgispro/EXEs/3.6"
 
 function RemoveApp {
     ## Uninstall Info
@@ -24,7 +24,6 @@ try {
 
         # Download new application file
 		$FilePath = "C:\Windows\Temp\ArcGISPro.exe"
-		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
