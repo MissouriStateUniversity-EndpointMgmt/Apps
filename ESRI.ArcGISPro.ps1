@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.01'
+Write-Output 'File Version 1.05'
 
 $ReleasesURL = "https://downloads.arcgis.com/dms/rest/download/secured/ArcGISPro_36_197382.exe?f=json&folder=software/arcgispro/EXEs/3.6"
 
@@ -16,7 +16,7 @@ try {
  	if ($Action -ieq 'Install')
 	{
         # Remove Old Versions
-        RemoveApp
+        # RemoveApp
 
         ## Release Information
         $DownloadURI = (Invoke-RestMethod -UseBasicParsing -Method GET -Uri $ReleasesURL).url
@@ -51,6 +51,7 @@ try {
 
         # Install
         Write-Output 'Install'
+		Write-Output $InstallArgs
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
 		Remove-Item $FilePath -Force
 		Remove-Item C:\Windows\Temp\ArcGISPro -Recurse -Force
