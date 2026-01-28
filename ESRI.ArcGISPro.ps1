@@ -23,7 +23,7 @@ try {
         Write-Output $DownloadURI
 
         # Download new application file
-		$FilePath = Join-Path -Path "C:\Windows\Temp\ArcGISPro.exe"
+		$FilePath = "C:\Windows\Temp\ArcGISPro.exe"
 		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
