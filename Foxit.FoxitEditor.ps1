@@ -1,4 +1,4 @@
-Write-Output 'File Version 1.00'
+Write-Output 'File Version 1.05'
 
 $DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
 $TempPath = "C:\Windows\Temp\FoxitPDFEditor"
@@ -52,6 +52,7 @@ try {
 
         # Install
         Write-Output 'Install'
+		Write-Output $InstallArgs
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
 		Remove-Item $TempPath -Recurse -Force
  	}
