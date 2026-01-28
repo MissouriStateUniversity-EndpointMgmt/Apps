@@ -26,14 +26,14 @@ try {
         Write-Output $DownloadURI
 
         # Download new application file
-		$FilePath = Join-Path -Path (Get-Location).Path -ChildPath "FoxitPDFEditor.zip"
+		$FilePath = Join-Path -Path "C:\Windows\Temp\FoxitPDFEditor\FoxitPDFEditor.zip"
 		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
         # Extract ZIP
-		Expand-Archive $FilePath -DestinationPath (Get-Location).Path
+		Expand-Archive $FilePath -DestinationPath "C:\Windows\Temp\FoxitPDFEditor\"
 
 		## Install Info
 		$InstallFile = Resolve-Path "FoxitPDF*.msi"
@@ -50,6 +50,7 @@ try {
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
+		Remove-Item C:\Windows\Temp\FoxitPDFEditor -Recurse -Force
  	}
 	elseif ($Action -ieq 'Remove')
 	{
