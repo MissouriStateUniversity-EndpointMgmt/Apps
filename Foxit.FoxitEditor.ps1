@@ -1,5 +1,8 @@
 Write-Output 'File Version 1.00'
 
+$DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
+$TempPath = "C:\Windows\Temp\FoxitPDFEditor"
+
 function RemoveApp {
     ## Uninstall Info
     $UninstallName = "Foxit PDF Editor"
@@ -21,23 +24,23 @@ try {
         RemoveApp
 
         ## Release Information
-        # $DownloadURI = "https://www.foxit.com/downloads/latest.html?product=Foxit-PDF-Editor-Suite-Pro-Teams&version=&platform=Windows&country=US&language=ML&package_type=zip"
-        $DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
         Write-Output $DownloadURI
 
+        # Create Temp Folder
+		New-Item -Path $TempPath -ItemType Directory -ErrorAction SilentlyContinue
+
         # Download new application file
-		$FilePath = "C:\Windows\Temp\FoxitPDFEditor.zip"
-		
+		$FilePath = "$TempPath\FoxitPDFEditor.zip"
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri $DownloadURI -Out $FilePath -UseBasicParsing
 
         # Extract ZIP
-		Expand-Archive $FilePath -DestinationPath "C:\Windows\Temp\FoxitPDFEditor\"
+		Expand-Archive $FilePath -DestinationPath $TempPath
 
 		## Install Info
-		$InstallFile = Resolve-Path "C:\Windows\Temp\FoxitPDFEditor\FoxitPDF*.msi"
-		$UpdateFile = Resolve-Path "C:\Windows\Temp\FoxitPDFEditor\FoxitPDF*.msp"
+		$InstallFile = Resolve-Path "$TempPath\FoxitPDF*.msi"
+		$UpdateFile = Resolve-Path "$TempPath\FoxitPDF*.msp"
 		If ($UpdateFile -ne $null)
 		{
 			$InstallArgs = "/i $InstallFile /qn /update $UpdateFile"
@@ -50,8 +53,7 @@ try {
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
-		Remove-Item $FilePath -Force
-		Remove-Item C:\Windows\Temp\FoxitPDFEditor -Recurse -Force
+		Remove-Item $TempPath -Recurse -Force
  	}
 	elseif ($Action -ieq 'Remove')
 	{
