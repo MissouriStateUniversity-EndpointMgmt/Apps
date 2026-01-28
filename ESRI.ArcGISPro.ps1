@@ -23,7 +23,7 @@ try {
         Write-Output $DownloadURI
 
         # Download new application file
-		$FilePath = Join-Path -Path "C:\Windows\Temp\ArcGISPro\ArcGISPro.exe"
+		$FilePath = Join-Path -Path "C:\Windows\Temp\ArcGISPro.exe"
 		
         Write-Output $FilePath
         $ProgressPreference = 'SilentlyContinue'
@@ -53,6 +53,7 @@ try {
         # Install
         Write-Output 'Install'
         Start-Process msiexec.exe -Wait -Passthru -ArgumentList $InstallArgs
+		Remove-Item $FilePath -Force
 		Remove-Item C:\Windows\Temp\ArcGISPro -Recurse -Force
  	}
 	elseif ($Action -ieq 'Remove')
