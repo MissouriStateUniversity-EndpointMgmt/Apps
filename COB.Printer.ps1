@@ -14,7 +14,7 @@ function Get-PrinterData {
 	}
 	switch ($PrinterName) {
  		# TOSHIBA
-        "COB-BLACK" {
+        "GLAS-ADMIN" {
 			$PrinterDetails.PortName = "MFP14113658"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO7516AC"
 			$PrinterDetails.PrinterLocation = ""
