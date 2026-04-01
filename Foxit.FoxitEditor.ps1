@@ -1,6 +1,6 @@
 Write-Output 'File Version 1.05'
 
-$DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2025.3.0/FoxitPDFEditor20253_L10N_Setup_Website_x64.zip"
+$DownloadURI = "https://cdn01.foxitsoftware.com/product/phantomPDF/desktop/win/2026.1.0/FoxitPDFEditor20261_L10N_Setup_Website_x64.zip"
 $TempPath = "C:\Windows\Temp\FoxitPDFEditor"
 
 function RemoveApp {
