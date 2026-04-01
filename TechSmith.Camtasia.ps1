@@ -25,7 +25,7 @@ try {
 	{
 		## Uninstall
 		Install-PackageProvider -Name NuGet -Force | Out-Null
-		Get-Package -Name "Camtasia 202*" -ErrorAction SilentlyContinue | Uninstall-Package
+		Get-Package -Name "Camtasia*" -ErrorAction SilentlyContinue | Uninstall-Package
  	}
 
 }
