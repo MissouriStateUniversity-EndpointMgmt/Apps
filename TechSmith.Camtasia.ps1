@@ -4,7 +4,10 @@ try {
 
  	if ($Action -ieq 'Install')
 	{
-  		## Release Information
+		## Uninstall 2025 and older
+		Get-Package -Name "Camtasia 202*" -ErrorAction SilentlyContinue | Uninstall-Package
+
+		## Release Information
 		$DownloadURI = "https://download.techsmith.com/camtasiastudio/releases/camtasia.msi"
 		Write-Output $DownloadURI
 
@@ -24,7 +27,6 @@ try {
 	elseif ($Action -ieq 'Remove')
 	{
 		## Uninstall
-		Install-PackageProvider -Name NuGet -Force | Out-Null
 		Get-Package -Name "Camtasia*" -ErrorAction SilentlyContinue | Uninstall-Package
  	}
 
