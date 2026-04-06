@@ -47,17 +47,17 @@ function Get-PrinterData {
 		"CSC-BLACK" {
 			$PrinterDetails.PortName = "csc-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4508A"
-			$PrinterDetails.PrinterLocation = "CHEK 203A"
+			$PrinterDetails.PrinterLocation = "CHEK 115"
 		}
 		"MTH-BLACK" {
 			$PrinterDetails.PortName = "mth-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6508A"
-			$PrinterDetails.PrinterLocation = "UNVH 212"
+			$PrinterDetails.PrinterLocation = "CHEK M03"
 		}
 		"MTH-BLUE" {
 			$PrinterDetails.PortName = "mth-blue"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6518A"
-			$PrinterDetails.PrinterLocation = "UNVH 006"
+			$PrinterDetails.PrinterLocation = "CHEK M26"
 		}
   		"EGR-RED" {
 			$PrinterDetails.PortName = "mfp14226282"
@@ -151,7 +151,7 @@ function Get-PrinterData {
     		"MTH-GREEN" {
 			$PrinterDetails.PortName = "mth-green"
 			$PrinterDetails.PrinterComment = "Brother HL-L8360CDW"
-			$PrinterDetails.PrinterLocation = "UNVH 212"
+			$PrinterDetails.PrinterLocation = "CHEK M03"
 		}
   
  		# XEROX
@@ -187,7 +187,7 @@ function Get-PrinterData {
   		"CSC-ORANGE" {
 			$PrinterDetails.PortName = "csc-orange"
 			$PrinterDetails.PrinterComment = "Dell Color Printer S3840cdn"
-			$PrinterDetails.PrinterLocation = "CHEK 203A"
+			$PrinterDetails.PrinterLocation = "CHEK 110C"
 		}
   		"CNAS-RED" {
 			$PrinterDetails.PortName = "cnas-red"
