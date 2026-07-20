@@ -46,7 +46,7 @@ function Get-PrinterData {
 		}
 		"CSC-BLACK" {
 			$PrinterDetails.PortName = "csc-black"
-			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4508A"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO3525AC"
 			$PrinterDetails.PrinterLocation = "CHEK 115"
 		}
 		"MTH-BLACK" {
