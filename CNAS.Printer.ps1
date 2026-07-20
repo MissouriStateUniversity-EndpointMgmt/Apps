@@ -29,12 +29,12 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
 			$PrinterDetails.PrinterLocation = "SCNC 210A"
 		}
-  		"SEES-BLACK" {
+		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
 			$PrinterDetails.PrinterLocation = "SCNC 310E"
 		}
-    	"CHM-BLACK" {
+		"CHM-BLACK" {
 			$PrinterDetails.PortName = "mfp14263477"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6528A"
 			$PrinterDetails.PrinterLocation = "SCNC 410"
@@ -59,7 +59,7 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6518A"
 			$PrinterDetails.PrinterLocation = "CHEK M26"
 		}
-  		"EGR-RED" {
+		"EGR-RED" {
 			$PrinterDetails.PortName = "mfp14226282"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
 			$PrinterDetails.PrinterLocation = "PCTR 2004A"
@@ -147,8 +147,8 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterLocation = "PCTR 2032"
 		}
   
-  		# BROTHER
-    		"MTH-GREEN" {
+		# BROTHER
+		"MTH-GREEN" {
 			$PrinterDetails.PortName = "mth-green"
 			$PrinterDetails.PrinterComment = "Brother HL-L8360CDW"
 			$PrinterDetails.PrinterLocation = "CHEK M03"
@@ -160,48 +160,48 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C7000"
 			$PrinterDetails.PrinterLocation = "SCNC 122C"
 		}
-    	"CHM-WHITE" {
+		"CHM-WHITE" {
 			$PrinterDetails.PortName = "xc-a572ad"
 			$PrinterDetails.PrinterComment = "Xerox VersaLink C405"
 			$PrinterDetails.PrinterLocation = "SCNC 410D"
 		}
-    	"PHY-RED" {
+		"PHY-RED" {
 			$PrinterDetails.PortName = "xc-d32bd8"
 			$PrinterDetails.PrinterComment = "Xerox WorkCentre 6515"
 			$PrinterDetails.PrinterLocation = "KEMP 101"
 		}
   
  		# LEXMARK
-  		"BIO-GREEN" {
+		"BIO-GREEN" {
 			$PrinterDetails.PortName = "bio-green"
 			$PrinterDetails.PrinterComment = "Lexmark MC2535adwe"
 			$PrinterDetails.PrinterLocation = "SCNC 108"
 		}
-  		"PHY-GREEN" {
+		"PHY-GREEN" {
 			$PrinterDetails.PortName = "phy-green"
 			$PrinterDetails.PrinterComment = "Lexmark MS421dn"
 			$PrinterDetails.PrinterLocation = "KEMP 226A"
 		}
   
-  		# DELL
-  		"CSC-ORANGE" {
+		# DELL
+		"CSC-ORANGE" {
 			$PrinterDetails.PortName = "csc-orange"
 			$PrinterDetails.PrinterComment = "Dell Color Printer S3840cdn"
 			$PrinterDetails.PrinterLocation = "CHEK 110C"
 		}
-  		"CNAS-RED" {
+		"CNAS-RED" {
 			$PrinterDetails.PortName = "cnas-red"
 			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
 			$PrinterDetails.PrinterLocation = "SCNC 110B"
 		}
-  		"OEWRI-RED" {
+		"OEWRI-RED" {
 			$PrinterDetails.PortName = "oewri-red"
 			$PrinterDetails.PrinterComment = "Dell C2660dn Color Laser"
 			$PrinterDetails.PrinterLocation = "SCNC 305"
 		}
   
  		# CANON
-     		"SEES-LFP" {
+		"SEES-LFP" {
 			$PrinterDetails.PortName = "tx-4200ipa7c3f2"
 			$PrinterDetails.PrinterComment = "Canon imagePROGRAF TX-4200"
 			$PrinterDetails.PrinterLocation = "SCNC 310E"
