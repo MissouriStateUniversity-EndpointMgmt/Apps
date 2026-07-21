@@ -34,6 +34,11 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6518A"
 			$PrinterDetails.PrinterLocation = "PSOA Library"
 		}
+		"GLAS-MKT" {
+			$PrinterDetails.PortName = "MFP15936215"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
+			$PrinterDetails.PrinterLocation = ""
+		}
  		# HP
   
   	}
