@@ -5,15 +5,16 @@ try {
 	if ($Action -ieq 'Install')
 	{
 
-		## Enable Developer Mode
+		## Enable Developer Mode and Sideloading
 		$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock"
 		# Create the key if it doesn't exist
 		If (!(Test-Path $RegPath)) {
 		    New-Item -Path $RegPath -Force | Out-Null
 		}
-		# Enable sideloading
+		New-ItemProperty -Path $RegPath -Name "AllowAllTrustedApps" -PropertyType DWord -Value 1 -Force | Out-Null
 		New-ItemProperty -Path $RegPath -Name "AllowDevelopmentWithoutDevLicense" -PropertyType DWord -Value 1 -Force | Out-Null
-		Write-Output "Developer Mode has been enabled."
+		Write-Output "Developer Mode and Sideloading have been enabled."
+		Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" | Select-Object AllowDevelopmentWithoutDevLicense, AllowAllTrustedApps
 
 		## Cowork desktop requirements
 		Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
