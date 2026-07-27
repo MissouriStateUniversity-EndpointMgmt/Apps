@@ -1,19 +1,19 @@
-Write-Output 'File Version 1.02'
+Write-Output 'File Version 1.03'
 
 try {
 	
 	if ($Action -ieq 'Install')
 	{
 
-		## Enable sideloading of trusted MSIX/AppX packages
+		## Enable Developer Mode
 		$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock"
 		# Create the key if it doesn't exist
 		If (!(Test-Path $RegPath)) {
 		    New-Item -Path $RegPath -Force | Out-Null
 		}
 		# Enable sideloading
-		New-ItemProperty -Path $RegPath -Name "AllowAllTrustedApps" -PropertyType DWord -Value 1 -Force | Out-Null
-		Write-Output "Sideloading has been enabled."
+		New-ItemProperty -Path $RegPath -Name "AllowDevelopmentWithoutDevLicense" -PropertyType DWord -Value 1 -Force | Out-Null
+		Write-Output "Developer Mode has been enabled."
 
 		## Cowork desktop requirements
 		Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
