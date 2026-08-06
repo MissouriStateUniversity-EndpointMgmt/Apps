@@ -39,6 +39,16 @@ function Get-PrinterData {
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4525AC"
 			$PrinterDetails.PrinterLocation = ""
 		}
+		"GLAS-FERM" {
+			$PrinterDetails.PortName = "MFP14167491"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO 6518a"
+			$PrinterDetails.PrinterLocation = ""
+		}
+		"GLAS-FERM-FAC" {
+			$PrinterDetails.PortName = "MFP14249954"
+			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO4528A"
+			$PrinterDetails.PrinterLocation = ""
+		}
  		# HP
   
   	}
