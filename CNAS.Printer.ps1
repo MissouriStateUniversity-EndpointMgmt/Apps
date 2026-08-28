@@ -27,7 +27,7 @@ function Get-PrinterData {
 		"BIO-BLUE" {
 			$PrinterDetails.PortName = "bio-blue"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO5518A"
-			$PrinterDetails.PrinterLocation = "SCNC 210A"
+			$PrinterDetails.PrinterLocation = "SCNC 210E"
 		}
 		"SEES-BLACK" {
 			$PrinterDetails.PortName = "sees-black"
