@@ -52,7 +52,7 @@ function Get-PrinterData {
 		"GLAS-SCDPM" {
 			$PrinterDetails.PortName = "MFP15881089"
 			$PrinterDetails.PrinterComment = "TOSHIBA e-STUDIO6527AC"
-			$PrinterDetails.PrinterLocation = ""
+			$PrinterDetails.PrinterLocation = "GLAS 200"
 		}
  		# HP
   
